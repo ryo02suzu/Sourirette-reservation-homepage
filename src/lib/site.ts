@@ -3,6 +3,10 @@
 /** Arche アプリ本体（予約・管理システム）の公開URL */
 export const APP_URL = "https://arche.sourirette.jp";
 
+/** public/ 配下のアセットURL（GitHub Pages のサブパス配信に対応） */
+export const asset = (p: string) =>
+  `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
+
 /**
  * アプリ本体の導線。
  * 注: 現在の本体は自己サインアップを閉じており（/signup・/ は /login へリダイレクト、
