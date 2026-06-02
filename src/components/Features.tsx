@@ -2,6 +2,7 @@ import { Users, Bell, RefreshCw, QrCode, ClipboardList, Clock, ChevronRight, Sta
 import type { LucideIcon } from "lucide-react";
 import { Reveal } from "@/lib/motion";
 import { asset, CONTACT_MAILTO } from "@/lib/site";
+import { Logo } from "./Logo";
 
 function BookingVisual() {
   const rows = [
@@ -67,7 +68,11 @@ export function Features() {
       {/* 導入見出し */}
       <div className="max-w-site mx-auto px-5 lg:px-8 pt-28 lg:pt-36 text-center">
         <Reveal>
-          <h2 className="h-section text-ink text-[34px] sm:text-[48px]">
+          <div className="flex items-center justify-center gap-2.5">
+            <Logo size={28} textClassName="text-[18px]" />
+            <span className="text-[12px] font-semibold text-sub">予約・経営クラウド</span>
+          </div>
+          <h2 className="mt-5 h-section text-ink text-[34px] sm:text-[48px]">
             医院に必要なものは、<br className="hidden sm:block" />ぜんぶ入っている。
           </h2>
           <p className="mt-5 mx-auto max-w-text text-[18px] leading-[1.7] text-sub">

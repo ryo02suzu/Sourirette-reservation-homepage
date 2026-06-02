@@ -1,15 +1,12 @@
-/** Arche ロゴ。エメラルドの角丸スクエア＋白の歯型アイコン、ワードマークは ink。 */
-export function Logo({
-  size = 30,
-  showText = true,
-  textClassName = "text-[19px]",
-  light = false,
-}: {
+type LogoProps = {
   size?: number;
   showText?: boolean;
   textClassName?: string;
   light?: boolean;
-}) {
+};
+
+/** Arche（プロダクト）ロゴ。エメラルドの角丸スクエア＋白の歯型アイコン。 */
+export function Logo({ size = 30, showText = true, textClassName = "text-[19px]", light = false }: LogoProps) {
   const inner = Math.round(size * 0.52);
   return (
     <span className="flex items-center gap-2.5 shrink-0">
@@ -26,6 +23,24 @@ export function Logo({
       </span>
       {showText && (
         <span className={`font-bold tracking-tight ${textClassName} ${light ? "text-white" : "text-ink"}`}>Arche</span>
+      )}
+    </span>
+  );
+}
+
+/** Sourirette（会社）ロゴ。ほほえみ（smile）を表す弧のマーク＋ワードマーク。 */
+export function SouriretteLogo({ size = 26, showText = true, textClassName = "text-[18px]", light = false }: LogoProps) {
+  return (
+    <span className="flex items-center gap-2.5 shrink-0">
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="8.5" cy="9" r="1.3" fill="#059669" />
+        <circle cx="15.5" cy="9" r="1.3" fill="#059669" />
+        <path d="M6 13.5C7.5 16.5 16.5 16.5 18 13.5" stroke="#059669" strokeWidth="2.2" strokeLinecap="round" />
+      </svg>
+      {showText && (
+        <span className={`font-semibold tracking-tight ${textClassName} ${light ? "text-white" : "text-ink"}`}>
+          Sourirette
+        </span>
       )}
     </span>
   );

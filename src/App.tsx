@@ -1,8 +1,9 @@
 import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
+import { Mission } from "./components/Mission";
+import { Products } from "./components/Products";
 import { Features } from "./components/Features";
 import { Showcase } from "./components/Showcase";
-import { HowItWorks } from "./components/HowItWorks";
 import { Pricing } from "./components/Pricing";
 import { Story } from "./components/Story";
 import { Company } from "./components/Company";
@@ -15,11 +16,15 @@ function App() {
     <div className="min-h-screen bg-white">
       <Nav />
       <main>
+        {/* 会社（Sourirette） */}
         <Hero />
+        <Mission />
+        <Products />
+        {/* プロダクト（Arche）の詳細 */}
         <Features />
         <Showcase />
-        <HowItWorks />
         <Pricing />
+        {/* 会社 */}
         <Story />
         <Company />
         <Faq />

@@ -37,11 +37,56 @@ export const COLORS = {
 /** 会社情報 */
 export const COMPANY = {
   name: "Sourirette合同会社",
+  reading: "スーリレット",
+  tagline: "ほほえみが続く毎日を、テクノロジーで。",
   product: "Arche（アルケー）",
   email: CONTACT_EMAIL,
   established: "2025年",
   business: "歯科医院向けクラウド予約・管理システムの開発・運営",
 } as const;
+
+/** 会社のミッション/ビジョン */
+export const VALUES = [
+  {
+    title: "Mission",
+    heading: "現場の負担を、テクノロジーで軽くする。",
+    body: "電話・紙・手作業に追われる医療現場の負担を減らし、スタッフが患者と向き合う時間を増やします。",
+  },
+  {
+    title: "Vision",
+    heading: "規模に関係なく、誰もが使えるDXを。",
+    body: "医院のDXを、予算や規模に関係なく誰もが始められるものに。地域医療を支えるインフラを目指します。",
+  },
+  {
+    title: "Value",
+    heading: "現場を知る人間が、現場のためにつくる。",
+    body: "歯学部に在籍する開発者が、21名の現役開業医の監修のもとで開発。机上ではなく現場の声から磨きます。",
+  },
+] as const;
+
+/** Sourirette が手がけるプロダクト（将来の拡張枠を含む） */
+export const PRODUCTS = [
+  {
+    key: "arche",
+    name: "Arche",
+    reading: "アルケー",
+    category: "歯科医院向け 予約・経営クラウド",
+    desc: "オンライン予約・患者管理・リコール・リマインダー・口コミ獲得・QR受付・経営分析を、ひとつに。",
+    status: "提供中",
+    href: "#arche",
+    live: true,
+  },
+  {
+    key: "next",
+    name: "次のプロダクト",
+    reading: "",
+    category: "準備中",
+    desc: "歯科の現場をなめらかにする、新しい仕組みを開発しています。",
+    status: "Coming soon",
+    href: CONTACT_MAILTO,
+    live: false,
+  },
+] as const;
 
 /** プラン定義（本体 server/plans.ts と一致させること） */
 export const PLANS = [
