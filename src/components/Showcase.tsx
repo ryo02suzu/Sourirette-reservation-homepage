@@ -4,45 +4,37 @@ import { Reveal, CountUp } from "@/lib/motion";
 const stats = [
   { to: 21, suffix: "名", label: "監修した現役開業医" },
   { to: 0, suffix: "円", label: "初期費用" },
-  { to: 3, suffix: "経路", label: "メール / SMS / LINE 通知" },
+  { to: 3, suffix: "経路", label: "メール / SMS / LINE" },
   { to: 5, suffix: "-in-1", label: "予約〜経営を1つに" },
 ];
 
 export function Showcase() {
   return (
-    <section className="relative overflow-hidden">
-      <img
-        src={asset("img/clinic-wide.jpg")}
-        alt="歯科クリニックの診療室"
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-night-950 via-night-950/90 to-night-950/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-transparent to-night-950/60" />
-
-      <div className="relative max-w-site mx-auto px-5 lg:px-8 py-24 lg:py-32">
-        <Reveal className="max-w-2xl">
-          <span className="label-mono">// WHY ARCHE</span>
-          <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[28px] lg:text-[42px] leading-[1.25]">
-            1院の現場から生まれ、
-            <br />
-            <span className="text-gradient">21名の開業医</span>が育てている。
+    <section className="bg-canvas">
+      <div className="max-w-site mx-auto px-5 lg:px-8 py-28 lg:py-36 text-center">
+        <Reveal>
+          <p className="text-[14px] font-semibold text-emerald-700">Why Arche</p>
+          <h2 className="mt-3 h-section text-ink text-[32px] sm:text-[46px]">
+            現場から生まれ、<br className="hidden sm:block" />現場で磨かれている。
           </h2>
-          <p className="mt-5 text-[15px] leading-[1.95] text-slate-300/85 max-w-xl">
-            机上の空論ではなく、実際の診療現場の動線にあわせて設計。
+          <p className="mt-5 mx-auto max-w-text text-[18px] leading-[1.7] text-sub">
+            歯学部に在籍する開発者が、21名の現役開業医の監修のもとで開発。
             「便利そう」ではなく「明日から使える」道具を目指しています。
           </p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
+        <Reveal delay={120} className="mt-14 rounded-[28px] overflow-hidden shadow-[0_40px_90px_-35px_rgba(0,0,0,0.3)]">
+          <img src={asset("img/clinic-wide.jpg")} alt="歯科クリニックの診療室" className="w-full h-[280px] sm:h-[440px] object-cover" loading="lazy" />
+        </Reveal>
+
+        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 90}>
-              <p className="font-display font-bold text-white leading-none">
-                <CountUp to={s.to} className="text-[40px] lg:text-[52px]" />
-                <span className="text-[18px] text-emerald-300 ml-0.5">{s.suffix}</span>
+              <p className="font-jp font-extrabold text-ink leading-none tracking-tight">
+                <CountUp to={s.to} className="text-[40px] sm:text-[52px]" />
+                <span className="text-[20px] text-emerald-600 ml-0.5">{s.suffix}</span>
               </p>
-              <div className="mt-3 h-px w-10 bg-gradient-to-r from-emerald-400 to-transparent" />
-              <p className="mt-3 text-[12.5px] text-slate-400 leading-snug">{s.label}</p>
+              <p className="mt-3 text-[13px] text-sub">{s.label}</p>
             </Reveal>
           ))}
         </div>

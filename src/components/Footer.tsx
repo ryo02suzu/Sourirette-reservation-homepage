@@ -1,4 +1,3 @@
-import { Logo } from "./Logo";
 import { APP_LINKS, COMPANY, CONTACT_MAILTO } from "@/lib/site";
 
 const cols = [
@@ -6,7 +5,6 @@ const cols = [
     heading: "プロダクト",
     links: [
       { label: "特長", href: "#features" },
-      { label: "課題と解決", href: "#solutions" },
       { label: "料金プラン", href: "#pricing" },
       { label: "よくある質問", href: "#faq" },
     ],
@@ -27,35 +25,25 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-white/10 bg-night-950">
-      <div className="max-w-site mx-auto px-5 lg:px-8 pt-16 pb-10">
-        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
-          <div>
-            <Logo />
-            <p className="mt-4 text-[13px] leading-[1.9] text-slate-500 max-w-xs">
-              歯科医院のための予約・経営クラウド。予約から経営まで、医院の“まわす仕事”をひとつに。
-            </p>
-          </div>
-
+    <footer className="border-t border-black/[0.08] bg-white">
+      <div className="max-w-site mx-auto px-5 lg:px-8 py-12">
+        <div className="grid sm:grid-cols-3 gap-8">
           {cols.map((col) => (
             <div key={col.heading}>
-              <p className="text-[12px] font-bold tracking-wider text-emerald-300/80 uppercase">{col.heading}</p>
-              <ul className="mt-4 space-y-2.5">
+              <p className="text-[12px] font-semibold text-ink">{col.heading}</p>
+              <ul className="mt-3 space-y-2">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-[13.5px] text-slate-400 hover:text-white transition-colors">
-                      {l.label}
-                    </a>
+                    <a href={l.href} className="text-[12.5px] text-sub hover:text-ink transition-colors">{l.label}</a>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-
-        <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[12px] text-slate-500">© 2026 {COMPANY.name}</p>
-          <p className="text-[12px] text-slate-600 font-display">Arche — dental clinic cloud</p>
+        <div className="mt-10 pt-6 border-t border-black/[0.07] flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p className="text-[12px] text-sub">© 2026 {COMPANY.name}</p>
+          <p className="text-[12px] text-sub">Arche — 歯科医院のための予約・経営クラウド</p>
         </div>
       </div>
     </footer>

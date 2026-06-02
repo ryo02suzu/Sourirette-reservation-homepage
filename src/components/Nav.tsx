@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { APP_LINKS, CONTACT_MAILTO } from "@/lib/site";
 
 const links = [
   { label: "特長", href: "#features" },
-  { label: "課題と解決", href: "#solutions" },
-  { label: "導入の流れ", href: "#flow" },
   { label: "料金", href: "#pricing" },
   { label: "開発の背景", href: "#story" },
   { label: "会社情報", href: "#company" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export function Nav() {
@@ -26,78 +25,54 @@ export function Nav() {
   return (
     <header className="fixed top-0 inset-x-0 z-50">
       <div
-        className={`transition-all duration-300 ${
-          scrolled ? "bg-night-950/70 backdrop-blur-xl border-b border-white/10" : "border-b border-transparent"
+        className={`transition-colors duration-300 ${
+          scrolled ? "bg-white/80 backdrop-blur-xl border-b border-black/[0.06]" : "bg-white/0 border-b border-transparent"
         }`}
       >
-        <nav className="max-w-site mx-auto px-5 lg:px-8 h-[68px] flex items-center gap-8">
+        <nav className="max-w-site mx-auto px-5 lg:px-8 h-[52px] flex items-center">
           <a href="#top" aria-label="Arche トップへ">
-            <Logo />
+            <Logo size={26} textClassName="text-[17px]" />
           </a>
 
-          <div className="hidden lg:flex items-center gap-7 ml-2">
+          <div className="hidden lg:flex items-center gap-8 mx-auto">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-[13.5px] font-medium text-slate-400 hover:text-white transition-colors"
-              >
+              <a key={l.href} href={l.href} className="text-[13px] text-ink/80 hover:text-ink transition-colors">
                 {l.label}
               </a>
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-2.5 ml-auto">
-            <a
-              href={APP_LINKS.login}
-              className="inline-flex items-center h-10 px-4 rounded-full text-[13.5px] font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
-            >
+          <div className="hidden lg:flex items-center gap-3 ml-auto">
+            <a href={APP_LINKS.login} className="text-[13px] text-ink/80 hover:text-ink transition-colors">
               ログイン
             </a>
             <a
               href={CONTACT_MAILTO}
-              className="group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13.5px] font-bold text-night-950 bg-gradient-to-r from-emerald-300 to-emerald-500 hover:to-emerald-400 transition-all"
-              style={{ boxShadow: "0 8px 26px -10px rgba(16,185,129,0.9)" }}
+              className="inline-flex items-center h-8 px-4 rounded-full text-[12.5px] font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition-colors"
             >
-              導入のご相談
-              <ArrowRight className="w-4 h-4" />
+              相談する
             </a>
           </div>
 
-          <button
-            className="lg:hidden ml-auto p-2 -mr-2 text-white"
-            onClick={() => setOpen((v) => !v)}
-            aria-label="メニュー"
-          >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button className="lg:hidden ml-auto p-2 -mr-2 text-ink" onClick={() => setOpen((v) => !v)} aria-label="メニュー">
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </nav>
 
         {open && (
-          <div className="lg:hidden border-t border-white/10 bg-night-950/95 backdrop-blur-xl">
-            <div className="px-5 py-4 space-y-1">
+          <div className="lg:hidden border-t border-black/[0.06] bg-white/95 backdrop-blur-xl">
+            <div className="px-5 py-3">
               {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-[15px] font-medium text-slate-200 border-b border-white/5"
-                >
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="block py-3 text-[15px] text-ink border-b border-black/5">
                   {l.label}
                 </a>
               ))}
-              <div className="pt-4 grid grid-cols-2 gap-2.5">
-                <a
-                  href={APP_LINKS.login}
-                  className="inline-flex items-center justify-center h-11 rounded-full text-[14px] font-semibold border border-white/15 text-white"
-                >
+              <div className="py-4 grid grid-cols-2 gap-2.5">
+                <a href={APP_LINKS.login} className="inline-flex items-center justify-center h-11 rounded-full text-[14px] font-semibold border border-hair text-ink">
                   ログイン
                 </a>
-                <a
-                  href={CONTACT_MAILTO}
-                  className="inline-flex items-center justify-center h-11 rounded-full text-[14px] font-bold text-night-950 bg-gradient-to-r from-emerald-300 to-emerald-500"
-                >
-                  導入のご相談
+                <a href={CONTACT_MAILTO} className="inline-flex items-center justify-center h-11 rounded-full text-[14px] font-semibold text-white bg-emerald-600">
+                  相談する
                 </a>
               </div>
             </div>

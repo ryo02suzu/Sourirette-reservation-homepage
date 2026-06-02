@@ -1,103 +1,136 @@
-import {
-  CalendarClock, Users, Bell, RefreshCw, BarChart3, Star, QrCode, ClipboardList, Clock,
-} from "lucide-react";
+import { Users, Bell, RefreshCw, QrCode, ClipboardList, Clock, ChevronRight, Star } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Reveal } from "@/lib/motion";
+import { asset, CONTACT_MAILTO } from "@/lib/site";
 
-type F = { icon: LucideIcon; title: string; desc: string; tag?: string; span?: string; hot?: boolean; viz?: "book" | "chart" };
-
-const features: F[] = [
-  { icon: CalendarClock, title: "24時間オンライン予約", desc: "スマホから24時間受付。診療メニュー・担当医・チェアごとに枠を設定し、電話対応を大幅削減。", span: "lg:col-span-2", hot: true, viz: "book" },
-  { icon: Users, title: "患者管理・カルテ", desc: "来院履歴・連絡先・メモを一元管理。" },
-  { icon: Bell, title: "リマインダー自動送信", desc: "前日にメール / SMS / LINE で自動通知。無断キャンセルを抑制。", tag: "メール/SMS/LINE" },
-  { icon: RefreshCw, title: "リコール自動化", desc: "定期健診の時期が来た患者を自動抽出して再来院を促進。" },
-  { icon: Star, title: "口コミ獲得", desc: "満足した患者をGoogleレビューへ自動誘導。低評価は院内フィードバックへ。", tag: "NEW", hot: true },
-  { icon: QrCode, title: "QRセルフ受付", desc: "来院患者がQRで受付。受付の負担を軽減。", tag: "NEW" },
-  { icon: BarChart3, title: "経営分析レポート", desc: "予約数・来院数・キャンセル率・売上を可視化し、データで意思決定。", span: "lg:col-span-2", viz: "chart" },
-  { icon: ClipboardList, title: "問診のデジタル化", desc: "Web事前問診で記入・転記の手間をゼロに。" },
-  { icon: Clock, title: "スタッフ・勤怠（QR打刻）", desc: "シフト管理とQR/PIN打刻、時給計算まで。" },
-];
-
-function Viz({ kind }: { kind: "book" | "chart" }) {
-  if (kind === "chart") {
-    const bars = [40, 64, 52, 80, 58, 92, 74];
-    return (
-      <div className="mt-5 flex items-end gap-2 h-24">
-        {bars.map((h, i) => (
-          <div key={i} className="flex-1 rounded-t-md bg-gradient-to-t from-emerald-500/30 to-emerald-300/80" style={{ height: `${h}%` }} />
+function BookingVisual() {
+  const rows = [
+    ["10:00", "山田 由紀", "受付中", true],
+    ["10:30", "鈴木 大輔", "予定", false],
+    ["11:00", "伊藤 さくら", "予定", false],
+  ] as const;
+  return (
+    <div className="rounded-[24px] bg-white border border-black/[0.06] shadow-[0_30px_70px_-30px_rgba(0,0,0,0.25)] p-6">
+      <div className="flex items-center justify-between">
+        <span className="text-[13px] font-semibold text-ink">本日の予約</span>
+        <span className="text-[12px] text-sub">6/2（火）</span>
+      </div>
+      <div className="mt-4 space-y-2.5">
+        {rows.map(([t, n, s, now]) => (
+          <div key={t} className={`flex items-center gap-3 rounded-xl border px-4 py-3 ${now ? "bg-emerald-50 border-emerald-200" : "bg-white border-black/[0.07]"}`}>
+            <span className="text-[13px] font-semibold text-emerald-700">{t}</span>
+            <span className="text-[14px] font-semibold text-ink flex-1">{n}</span>
+            <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${now ? "bg-emerald-600 text-white" : "bg-emerald-50 text-emerald-700"}`}>{s}</span>
+          </div>
         ))}
       </div>
-    );
-  }
-  return (
-    <div className="mt-5 space-y-1.5">
-      {[
-        ["10:00", "山田 由紀", "受付中"],
-        ["10:30", "鈴木 大輔", "予定"],
-        ["11:00", "伊藤 さくら", "予定"],
-      ].map(([t, n, s], i) => (
-        <div key={t} className={`flex items-center gap-2.5 rounded-lg border px-3 py-2 ${i === 0 ? "bg-emerald-500/15 border-emerald-400/40" : "bg-white/[0.03] border-white/10"}`}>
-          <span className="text-[11px] font-mono text-emerald-300">{t}</span>
-          <span className="text-[12px] font-semibold text-slate-100 flex-1">{n}</span>
-          <span className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${i === 0 ? "bg-emerald-400 text-night-950" : "bg-white/10 text-slate-300"}`}>{s}</span>
-        </div>
-      ))}
     </div>
   );
 }
 
+function Highlight({
+  flip, eyebrow, title, body, link, children,
+}: {
+  flip?: boolean; eyebrow: string; title: string; body: string; link?: string; children: React.ReactNode;
+}) {
+  return (
+    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <Reveal className={flip ? "lg:order-2" : ""}>
+        <p className="text-[14px] font-semibold text-emerald-700">{eyebrow}</p>
+        <h3 className="mt-3 h-section text-ink text-[30px] sm:text-[40px]">{title}</h3>
+        <p className="mt-5 text-[17px] leading-[1.8] text-sub max-w-md">{body}</p>
+        {link && (
+          <a href={CONTACT_MAILTO} className="link-chevron text-[16px] mt-6">
+            {link} <ChevronRight className="w-4 h-4" />
+          </a>
+        )}
+      </Reveal>
+      <Reveal delay={120} className={flip ? "lg:order-1" : ""}>
+        {children}
+      </Reveal>
+    </div>
+  );
+}
+
+const tiles: { icon: LucideIcon; title: string; desc: string; tag?: string }[] = [
+  { icon: Users, title: "患者管理・カルテ", desc: "来院履歴・連絡先・メモを一元管理。" },
+  { icon: RefreshCw, title: "リコール自動化", desc: "定期健診の時期を自動抽出して再来院を促進。" },
+  { icon: QrCode, title: "QRセルフ受付", desc: "来院患者がQRで受付。受付の負担を軽減。", tag: "NEW" },
+  { icon: ClipboardList, title: "問診のデジタル化", desc: "Web事前問診で記入・転記の手間をゼロに。" },
+  { icon: Bell, title: "リマインダー", desc: "メール / SMS / LINE で前日に自動通知。" },
+  { icon: Clock, title: "スタッフ・勤怠", desc: "シフト管理とQR/PIN打刻、時給計算まで。" },
+];
+
 export function Features() {
   return (
-    <section id="features" className="relative py-24 lg:py-32">
-      <div className="max-w-site mx-auto px-5 lg:px-8">
-        <Reveal className="max-w-2xl">
-          <span className="label-mono">// FEATURES</span>
-          <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[30px] lg:text-[44px] leading-[1.18]">
-            必要な機能を、<span className="text-gradient">まるごと一つに。</span>
+    <section id="features">
+      {/* 導入見出し */}
+      <div className="max-w-site mx-auto px-5 lg:px-8 pt-28 lg:pt-36 text-center">
+        <Reveal>
+          <h2 className="h-section text-ink text-[34px] sm:text-[48px]">
+            医院に必要なものは、<br className="hidden sm:block" />ぜんぶ入っている。
           </h2>
-          <p className="mt-5 text-[15.5px] leading-[1.9] text-slate-400">
-            予約・受付から、患者の定着、評判づくり、経営判断まで。
-            複数のツールを契約せず、Arche だけで完結します。
+          <p className="mt-5 mx-auto max-w-text text-[18px] leading-[1.7] text-sub">
+            予約・受付から患者の定着、評判づくり、経営判断まで。複数のツールを契約せず、Arche だけで完結します。
           </p>
         </Reveal>
+      </div>
 
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {features.map((f, i) => {
-            const Icon = f.icon;
+      {/* ハイライト1（白） */}
+      <div className="max-w-site mx-auto px-5 lg:px-8 py-24 lg:py-32">
+        <Highlight
+          eyebrow="オンライン予約"
+          title="24時間、予約を受けつづける。"
+          body="スマホから24時間予約受付。診療メニュー・担当医・チェアごとに枠を設定でき、電話対応の負担を大きく減らします。"
+          link="導入を相談する"
+        >
+          <BookingVisual />
+        </Highlight>
+      </div>
+
+      {/* ハイライト2（キャンバス、写真） */}
+      <div className="bg-canvas">
+        <div className="max-w-site mx-auto px-5 lg:px-8 py-24 lg:py-32">
+          <Highlight
+            flip
+            eyebrow="口コミ獲得"
+            title="その笑顔を、医院の力に。"
+            body="満足した患者をGoogleレビューへ自動で誘導。低評価は院内フィードバックに振り分け、評判を守りながら改善できます。"
+            link="くわしく相談する"
+          >
+            <div className="relative">
+              <div className="rounded-[24px] overflow-hidden shadow-[0_30px_70px_-30px_rgba(0,0,0,0.3)]">
+                <img src={asset("img/smile.jpg")} alt="笑顔の患者" className="w-full h-[300px] sm:h-[380px] object-cover" loading="lazy" />
+              </div>
+              <div className="absolute -bottom-5 -left-3 sm:left-6 bg-white rounded-2xl border border-black/[0.06] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.25)] px-5 py-3.5 flex items-center gap-3">
+                <div className="flex">{[0,1,2,3,4].map((i)=><Star key={i} className="w-4 h-4 fill-amber-400 stroke-amber-400" />)}</div>
+                <div>
+                  <p className="text-[13px] font-bold text-ink">★5 の口コミを獲得</p>
+                  <p className="text-[11.5px] text-sub">Googleレビューへ自動誘導</p>
+                </div>
+              </div>
+            </div>
+          </Highlight>
+        </div>
+      </div>
+
+      {/* タイル（白） */}
+      <div className="max-w-site mx-auto px-5 lg:px-8 py-24 lg:py-32">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {tiles.map((t, i) => {
+            const Icon = t.icon;
             return (
-              <Reveal key={f.title} delay={(i % 3) * 90} className={f.span ?? ""}>
-                <article
-                  className={`group relative h-full rounded-3xl border p-6 lg:p-7 transition-all duration-300 hover:-translate-y-1.5 ${
-                    f.hot
-                      ? "border-emerald-400/30 bg-gradient-to-br from-emerald-500/10 to-white/[0.02]"
-                      : "border-white/10 bg-white/[0.03] hover:border-white/20"
-                  }`}
-                >
-                  <div
-                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 60px -30px rgba(16,185,129,0.5)" }}
-                  />
-                  <div className="relative flex items-center gap-3">
-                    <span
-                      className="grid place-items-center w-11 h-11 rounded-2xl text-night-950"
-                      style={{ backgroundImage: "linear-gradient(140deg,#6ee7b7,#10b981)" }}
-                    >
+              <Reveal key={t.title} delay={(i % 3) * 90}>
+                <div className="h-full rounded-[24px] bg-canvas p-7 transition-transform duration-300 hover:-translate-y-1.5">
+                  <div className="flex items-center gap-2.5">
+                    <span className="grid place-items-center w-11 h-11 rounded-2xl bg-white text-emerald-600 shadow-sm">
                       <Icon className="w-5 h-5" />
                     </span>
-                    {f.tag && (
-                      <span
-                        className={`text-[10.5px] font-bold px-2.5 py-1 rounded-full ${
-                          f.tag === "NEW" ? "bg-amber-400/20 text-amber-300" : "bg-emerald-400/15 text-emerald-300"
-                        }`}
-                      >
-                        {f.tag}
-                      </span>
-                    )}
+                    {t.tag && <span className="text-[10.5px] font-bold px-2.5 py-1 rounded-full bg-emerald-600 text-white">{t.tag}</span>}
                   </div>
-                  <h3 className="relative mt-4 text-[17px] font-bold text-white">{f.title}</h3>
-                  <p className="relative mt-2 text-[13.5px] leading-[1.85] text-slate-400 max-w-md">{f.desc}</p>
-                  {f.viz && <Viz kind={f.viz} />}
-                </article>
+                  <h3 className="mt-5 text-[18px] font-bold text-ink">{t.title}</h3>
+                  <p className="mt-2 text-[14px] leading-[1.75] text-sub">{t.desc}</p>
+                </div>
               </Reveal>
             );
           })}
