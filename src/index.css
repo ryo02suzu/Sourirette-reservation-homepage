@@ -5,38 +5,33 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 96px;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
   body {
     @apply font-sans bg-white text-ink;
     font-feature-settings: "palt";
-    letter-spacing: -0.01em;
   }
-  ::selection {
-    background: #b9f6d2;
-    color: #064e3b;
-  }
+  ::selection { background: #a7f3d0; color: #064e3b; }
 }
 
 @layer utilities {
-  /* Apple 的な大見出し（太く・詰まった字間） */
-  .h-hero {
-    @apply font-jp font-extrabold tracking-[-0.03em] leading-[1.07];
+  /* セクション見出し（英字ラベル＋和文） */
+  .sect-label {
+    @apply font-en text-[12px] font-bold tracking-[0.18em] text-brand uppercase;
   }
-  .h-section {
-    @apply font-jp font-extrabold tracking-[-0.025em] leading-[1.12];
+  .sect-title {
+    @apply font-sans font-bold tracking-[-0.01em] text-ink;
   }
-  /* テキストリンク（詳しく ›） */
-  .link-chevron {
-    @apply inline-flex items-center gap-1 font-medium text-emerald-700 hover:underline underline-offset-4;
+  /* 矢印リンク（一覧へ ›） */
+  .arrow-link {
+    @apply inline-flex items-center gap-1.5 text-[14px] font-semibold text-brand hover:gap-2.5 transition-all;
   }
-  /* 控えめなグラデ文字（アクセント用） */
-  .text-grad {
-    background-image: linear-gradient(95deg, #059669, #10b981);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* 左の縦バー付き見出し */
+  .bar-title::before {
+    content: "";
+    @apply inline-block w-1 h-6 mr-3 align-[-2px] rounded-full;
+    background: linear-gradient(#0a8f5b, #34d399);
   }
 }

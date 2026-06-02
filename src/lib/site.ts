@@ -42,8 +42,51 @@ export const COMPANY = {
   product: "Arche（アルケー）",
   email: CONTACT_EMAIL,
   established: "2025年",
-  business: "歯科医院向けクラウド予約・管理システムの開発・運営",
+  business: "Webサイト制作、ECサイト構築、歯科医院向け予約・経営クラウド「Arche」の開発・運営",
 } as const;
+
+/** 事業・サービス */
+export const SERVICES = [
+  {
+    key: "web",
+    no: "01",
+    name: "ホームページ制作",
+    en: "Web Production",
+    desc: "デザインから実装・公開まで一貫対応。成果につながる、速くて美しいサイトを制作します。",
+    img: "img/web.jpg",
+    href: CONTACT_MAILTO,
+    cta: "制作を相談する",
+  },
+  {
+    key: "ec",
+    no: "02",
+    name: "ECサイト構築",
+    en: "E-Commerce",
+    desc: "ネットショップの立ち上げ・移行・運用改善まで。売れるオンラインストアをつくります。",
+    img: "img/ec.jpg",
+    href: CONTACT_MAILTO,
+    cta: "ECを相談する",
+    badge: "準備中",
+  },
+  {
+    key: "arche",
+    no: "03",
+    name: "Arche（予約・経営クラウド）",
+    en: "SaaS Product",
+    desc: "歯科医院向けの予約・患者管理・リコール・口コミ・経営分析をひとつに。自社開発のSaaS。",
+    img: "img/clinic-wide.jpg",
+    href: "#arche",
+    cta: "Arche を見る",
+    badge: "提供中",
+  },
+] as const;
+
+/** ニュース（サンプル：実情報に差し替え可） */
+export const NEWS = [
+  { date: "2026.05.20", cat: "プロダクト", title: "歯科向け予約・経営クラウド「Arche」のβ版提供を開始しました。" },
+  { date: "2026.04.01", cat: "会社", title: "Sourirette合同会社のコーポレートサイトを公開しました。" },
+  { date: "2026.03.10", cat: "サービス", title: "ホームページ制作・ECサイト構築のご相談受付を開始しました。" },
+] as const;
 
 /** 会社のミッション/ビジョン */
 export const VALUES = [

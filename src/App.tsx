@@ -1,14 +1,11 @@
 import { Nav } from "./components/Nav";
-import { Hero } from "./components/Hero";
-import { Mission } from "./components/Mission";
-import { Products } from "./components/Products";
-import { Features } from "./components/Features";
-import { Showcase } from "./components/Showcase";
-import { Pricing } from "./components/Pricing";
-import { Story } from "./components/Story";
+import { HeroCarousel } from "./components/HeroCarousel";
+import { News } from "./components/News";
+import { Business } from "./components/Business";
+import { ArcheHighlight } from "./components/ArcheHighlight";
+import { AboutBand } from "./components/AboutBand";
 import { Company } from "./components/Company";
-import { Faq } from "./components/Faq";
-import { FinalCta } from "./components/FinalCta";
+import { ContactBand } from "./components/ContactBand";
 import { Footer } from "./components/Footer";
 
 function App() {
@@ -16,19 +13,13 @@ function App() {
     <div className="min-h-screen bg-white">
       <Nav />
       <main>
-        {/* 会社（Sourirette） */}
-        <Hero />
-        <Mission />
-        <Products />
-        {/* プロダクト（Arche）の詳細 */}
-        <Features />
-        <Showcase />
-        <Pricing />
-        {/* 会社 */}
-        <Story />
+        <HeroCarousel />
+        <News />
+        <Business />
+        <ArcheHighlight />
+        <AboutBand />
         <Company />
-        <Faq />
-        <FinalCta />
+        <ContactBand />
       </main>
       <Footer />
     </div>
