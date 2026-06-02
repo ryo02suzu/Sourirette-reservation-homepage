@@ -1,5 +1,6 @@
 import { Target, HeartHandshake, Sparkles, Mail } from "lucide-react";
 import { COMPANY, CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/site";
+import { Reveal } from "@/lib/motion";
 
 const values = [
   { icon: Target, title: "ミッション", desc: "歯科の現場を、テクノロジーでもっとなめらかに。電話・紙・手作業の負担を減らし、スタッフが患者と向き合う時間を増やします。" },
@@ -19,15 +20,15 @@ export function Company() {
   return (
     <section id="company" className="relative py-24 lg:py-32">
       <div className="max-w-site mx-auto px-5 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="eyebrow">Company</span>
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <span className="label-mono">// COMPANY</span>
           <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[30px] lg:text-[44px] leading-[1.2]">
             運営会社について
           </h2>
           <p className="mt-5 text-[15.5px] leading-[1.9] text-slate-400">
             Arche は <span className="font-bold text-white">{COMPANY.name}</span> が開発・運営しています。
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid lg:grid-cols-3 gap-4">
           {values.map((v) => {

@@ -1,35 +1,37 @@
 import { Check } from "lucide-react";
 import { PLANS, CONTACT_MAILTO, APP_LINKS } from "@/lib/site";
+import { Reveal } from "@/lib/motion";
 
 export function Pricing() {
   return (
     <section id="pricing" className="relative py-24 lg:py-32 border-y border-white/10 bg-white/[0.015]">
       <div className="max-w-site mx-auto px-5 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="eyebrow">Pricing</span>
+        <Reveal className="text-center max-w-2xl mx-auto">
+          <span className="label-mono">// PRICING</span>
           <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[30px] lg:text-[44px] leading-[1.2]">
             規模に合わせて、<span className="text-gradient">無理なく。</span>
           </h2>
           <p className="mt-5 text-[15.5px] leading-[1.9] text-slate-400">
             初期費用は0円。フリープランから始めて、成長に合わせてアップグレード。
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-          {PLANS.map((p) =>
+          {PLANS.map((p, idx) =>
             p.featured ? (
-              <div key={p.key} className="gborder glow-emerald">
-                <div className="gborder-inner p-7 flex flex-col">
+              <Reveal key={p.key} delay={idx * 90} className="gborder glow-emerald">
+                <div className="gborder-inner p-7 flex flex-col h-full">
                   <PlanBody p={p} featured />
                 </div>
-              </div>
+              </Reveal>
             ) : (
-              <div
+              <Reveal
                 key={p.key}
+                delay={idx * 90}
                 className="rounded-3xl border border-white/10 bg-white/[0.03] p-7 flex flex-col hover:border-white/20 transition-colors"
               >
                 <PlanBody p={p} />
-              </div>
+              </Reveal>
             ),
           )}
         </div>

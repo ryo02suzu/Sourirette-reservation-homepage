@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { CONTACT_MAILTO } from "@/lib/site";
+import { Reveal } from "@/lib/motion";
 
 const faqs = [
   { q: "導入にITの知識は必要ですか？", a: "不要です。診療メニューやスタッフを入力するだけで使い始められ、初期セットアップは担当者がサポートします。難しい設定はありません。" },
@@ -42,12 +43,12 @@ export function Faq() {
   return (
     <section id="faq" className="relative py-24 lg:py-32 border-y border-white/10 bg-white/[0.015]">
       <div className="max-w-3xl mx-auto px-5 lg:px-8">
-        <div className="text-center">
-          <span className="eyebrow">FAQ</span>
+        <Reveal className="text-center">
+          <span className="label-mono">// FAQ</span>
           <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[30px] lg:text-[44px] leading-[1.2]">
             よくあるご質問
           </h2>
-        </div>
+        </Reveal>
 
         <div className="mt-12 space-y-3">
           {faqs.map((f) => (

@@ -28,6 +28,7 @@ export default {
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', '"Noto Sans JP"', "system-ui", "sans-serif"],
         display: ['"Space Grotesk"', '"Noto Sans JP"', "system-ui", "sans-serif"],
+        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
         jp: ['"Noto Sans JP"', "system-ui", "sans-serif"],
       },
       maxWidth: { site: "1200px" },

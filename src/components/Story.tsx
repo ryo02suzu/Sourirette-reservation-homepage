@@ -34,7 +34,7 @@ export function Story() {
 
           {/* テキスト */}
           <div className="order-1 lg:order-2">
-            <span className="eyebrow">Our story</span>
+            <span className="label-mono">// OUR STORY</span>
             <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[28px] lg:text-[40px] leading-[1.25]">
               現場を知る人間が、
               <br />

@@ -1,6 +1,20 @@
-import { ArrowRight, ShieldCheck, Sparkles, Star, Bell } from "lucide-react";
+import { ArrowRight, Star, Bell } from "lucide-react";
 import { CONTACT_MAILTO } from "@/lib/site";
 import { Aurora } from "./Aurora";
+import { RotatingWord } from "@/lib/motion";
+
+/** ブループリント的なコーナーの十字マーカー */
+function Ticks() {
+  const base = "absolute w-3 h-3 text-emerald-400/50";
+  return (
+    <>
+      <span className={`${base} -top-1.5 -left-1.5`}>＋</span>
+      <span className={`${base} -top-1.5 -right-1.5`}>＋</span>
+      <span className={`${base} -bottom-1.5 -left-1.5`}>＋</span>
+      <span className={`${base} -bottom-1.5 -right-1.5`}>＋</span>
+    </>
+  );
+}
 
 function ProductWindow() {
   const rows = [
@@ -10,59 +24,62 @@ function ProductWindow() {
     { t: "11:00", n: "伊藤 さくら", m: "クリーニング", s: "next" },
   ];
   return (
-    <div className="gborder glow-emerald">
-      <div className="gborder-inner overflow-hidden">
-        {/* ウィンドウ上部 */}
-        <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.02]">
-          <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-          <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
-          <span className="ml-3 text-[11px] text-slate-500 font-mono">arche.sourirette.jp / 予約台帳</span>
-          <span className="ml-auto text-[10px] text-emerald-300/80 font-mono">LIVE</span>
-        </div>
-
-        <div className="p-4">
-          {/* 統計 */}
-          <div className="grid grid-cols-3 gap-2.5">
-            {[
-              ["本日の予約", "12"],
-              ["今月来院", "247"],
-              ["キャンセル率", "3.2%"],
-            ].map(([l, v]) => (
-              <div key={l} className="rounded-xl bg-white/[0.03] border border-white/10 px-3 py-2.5">
-                <p className="text-[9px] text-slate-500">{l}</p>
-                <p className="text-[18px] font-display font-bold text-white leading-tight mt-0.5">{v}</p>
-              </div>
-            ))}
+    <div className="relative">
+      <Ticks />
+      <div className="gborder glow-emerald">
+        <div className="gborder-inner overflow-hidden">
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/[0.02]">
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="ml-3 text-[11px] text-slate-500 font-mono">arche.sourirette.jp / 予約台帳</span>
+            <span className="ml-auto inline-flex items-center gap-1 text-[10px] text-emerald-300 font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              LIVE
+            </span>
           </div>
-          {/* 予約行 */}
-          <div className="mt-3 space-y-1.5">
-            {rows.map((r) => {
-              const cls =
-                r.s === "now"
-                  ? "bg-emerald-500/15 border-emerald-400/40"
-                  : r.s === "done"
-                    ? "bg-white/[0.02] border-white/5 opacity-55"
-                    : "bg-white/[0.03] border-white/10";
-              return (
-                <div key={r.t} className={`flex items-center gap-2.5 rounded-lg border px-3 py-2 ${cls}`}>
-                  <span className="text-[11px] font-mono text-emerald-300">{r.t}</span>
-                  <span className="text-[12px] font-semibold text-slate-100 flex-1 truncate">{r.n}</span>
-                  <span className="text-[10px] text-slate-500 hidden sm:block">{r.m}</span>
-                  <span
-                    className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${
-                      r.s === "now"
-                        ? "bg-emerald-400 text-night-950"
-                        : r.s === "done"
-                          ? "bg-white/10 text-slate-500"
-                          : "bg-white/10 text-slate-300"
-                    }`}
-                  >
-                    {r.s === "done" ? "完了" : r.s === "now" ? "受付中" : "予定"}
-                  </span>
+
+          <div className="p-4">
+            <div className="grid grid-cols-3 gap-2.5">
+              {[
+                ["本日の予約", "12"],
+                ["今月来院", "247"],
+                ["キャンセル率", "3.2%"],
+              ].map(([l, v]) => (
+                <div key={l} className="rounded-xl bg-white/[0.03] border border-white/10 px-3 py-2.5">
+                  <p className="text-[9px] text-slate-500">{l}</p>
+                  <p className="text-[18px] font-display font-bold text-white leading-tight mt-0.5">{v}</p>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+            <div className="mt-3 space-y-1.5">
+              {rows.map((r) => {
+                const cls =
+                  r.s === "now"
+                    ? "bg-emerald-500/15 border-emerald-400/40"
+                    : r.s === "done"
+                      ? "bg-white/[0.02] border-white/5 opacity-55"
+                      : "bg-white/[0.03] border-white/10";
+                return (
+                  <div key={r.t} className={`flex items-center gap-2.5 rounded-lg border px-3 py-2 ${cls}`}>
+                    <span className="text-[11px] font-mono text-emerald-300">{r.t}</span>
+                    <span className="text-[12px] font-semibold text-slate-100 flex-1 truncate">{r.n}</span>
+                    <span className="text-[10px] text-slate-500 hidden sm:block">{r.m}</span>
+                    <span
+                      className={`text-[9px] font-bold px-1.5 py-0.5 rounded-full ${
+                        r.s === "now"
+                          ? "bg-emerald-400 text-night-950"
+                          : r.s === "done"
+                            ? "bg-white/10 text-slate-500"
+                            : "bg-white/10 text-slate-300"
+                      }`}
+                    >
+                      {r.s === "done" ? "完了" : r.s === "now" ? "受付中" : "予定"}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -70,25 +87,29 @@ function ProductWindow() {
   );
 }
 
+const proof = ["一般歯科", "小児歯科", "矯正歯科", "審美・ホワイトニング", "口腔外科", "訪問歯科"];
+
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-[68px]">
       <Aurora />
-      <div className="absolute inset-0 grid-bg [mask-image:radial-gradient(70%_60%_at_50%_0%,#000_0%,transparent_85%)]" />
+      <div className="absolute inset-0 blueprint [mask-image:radial-gradient(75%_60%_at_50%_0%,#000_0%,transparent_82%)]" />
 
-      <div className="relative max-w-site mx-auto px-5 lg:px-8 pt-16 pb-24 lg:pt-24 lg:pb-32">
+      <div className="relative max-w-site mx-auto px-5 lg:px-8 pt-16 pb-16 lg:pt-24 lg:pb-20">
         <div className="grid lg:grid-cols-[1.05fr_1fr] gap-14 items-center">
           {/* テキスト */}
           <div className="animate-fadeUp">
-            <span className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[12px] font-semibold text-emerald-200">
-              <Sparkles className="w-3.5 h-3.5" />
-              歯科医院のための予約・経営クラウド
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 label-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              DENTAL CLINIC CLOUD
             </span>
 
-            <h1 className="mt-6 font-jp font-black tracking-tight text-white leading-[1.1] text-[42px] sm:text-[56px] lg:text-[66px]">
-              医院の“まわす仕事”を、
+            <h1 className="mt-6 font-jp font-black tracking-tight text-white leading-[1.1] text-[42px] sm:text-[56px] lg:text-[64px]">
+              医院の
+              <RotatingWord className="text-gradient" words={["予約", "受付", "リコール", "口コミ"]} />
+              を、
               <br />
-              <span className="text-gradient">ぜんぶ自動で。</span>
+              ぜんぶ自動で。
             </h1>
 
             <p className="mt-6 text-[16px] leading-[2] text-slate-400 max-w-xl">
@@ -114,15 +135,19 @@ export function Hero() {
               </a>
             </div>
 
-            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 text-[12.5px] text-slate-500">
-              <span className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                個人情報保護法 準拠・SSL暗号化
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Star className="w-4 h-4 text-emerald-400" />
-                21名の現役開業医が監修
-              </span>
+            {/* プルーフ行 */}
+            <div className="mt-10">
+              <p className="label-mono">／ 21名の現役開業医が監修・幅広い診療科目に対応</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {proof.map((p) => (
+                  <span
+                    key={p}
+                    className="text-[11.5px] text-slate-400 border border-white/10 rounded-full px-3 py-1"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 

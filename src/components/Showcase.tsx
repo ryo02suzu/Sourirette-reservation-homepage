@@ -1,10 +1,11 @@
 import { asset } from "@/lib/site";
+import { Reveal, CountUp } from "@/lib/motion";
 
 const stats = [
-  { value: "21", suffix: "名", label: "監修した現役開業医" },
-  { value: "0", suffix: "円", label: "初期費用" },
-  { value: "3", suffix: "経路", label: "メール / SMS / LINE 通知" },
-  { value: "5", suffix: "-in-1", label: "予約〜経営を1つに" },
+  { to: 21, suffix: "名", label: "監修した現役開業医" },
+  { to: 0, suffix: "円", label: "初期費用" },
+  { to: 3, suffix: "経路", label: "メール / SMS / LINE 通知" },
+  { to: 5, suffix: "-in-1", label: "予約〜経営を1つに" },
 ];
 
 export function Showcase() {
@@ -16,13 +17,12 @@ export function Showcase() {
         className="absolute inset-0 w-full h-full object-cover"
         loading="lazy"
       />
-      {/* ダークなシネマティック・オーバーレイ */}
       <div className="absolute inset-0 bg-gradient-to-r from-night-950 via-night-950/90 to-night-950/40" />
       <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-transparent to-night-950/60" />
 
       <div className="relative max-w-site mx-auto px-5 lg:px-8 py-24 lg:py-32">
-        <div className="max-w-2xl">
-          <span className="eyebrow">Why Arche</span>
+        <Reveal className="max-w-2xl">
+          <span className="label-mono">// WHY ARCHE</span>
           <h2 className="mt-4 font-jp font-black tracking-tight text-white text-[28px] lg:text-[42px] leading-[1.25]">
             1院の現場から生まれ、
             <br />
@@ -32,18 +32,18 @@ export function Showcase() {
             机上の空論ではなく、実際の診療現場の動線にあわせて設計。
             「便利そう」ではなく「明日から使える」道具を目指しています。
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8">
-          {stats.map((s) => (
-            <div key={s.label}>
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 90}>
               <p className="font-display font-bold text-white leading-none">
-                <span className="text-[40px] lg:text-[52px]">{s.value}</span>
+                <CountUp to={s.to} className="text-[40px] lg:text-[52px]" />
                 <span className="text-[18px] text-emerald-300 ml-0.5">{s.suffix}</span>
               </p>
               <div className="mt-3 h-px w-10 bg-gradient-to-r from-emerald-400 to-transparent" />
               <p className="mt-3 text-[12.5px] text-slate-400 leading-snug">{s.label}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
