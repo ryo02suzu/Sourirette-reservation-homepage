@@ -1,80 +1,82 @@
-import { Building2, Target, HeartHandshake, Mail } from "lucide-react";
-import { COMPANY, COLORS, CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/site";
-
-const GREEN = COLORS.brand;
-const GREEN_LIGHT = COLORS.brandLight;
-const TEXT = COLORS.navy;
-
-const overview: { label: string; value: string }[] = [
-  { label: "会社名", value: COMPANY.name },
-  { label: "事業内容", value: COMPANY.business },
-  { label: "主要プロダクト", value: COMPANY.product },
-  { label: "設立", value: COMPANY.established },
-  { label: "お問い合わせ", value: COMPANY.email },
-];
+import { Target, HeartHandshake, Sparkles, Mail } from "lucide-react";
+import { COMPANY, CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/site";
 
 const values = [
   {
     icon: Target,
-    title: "私たちのミッション",
-    desc: "「歯科の現場を、テクノロジーでもっとなめらかに。」電話・紙・手作業に追われる現場の負担を減らし、スタッフが患者と向き合う時間を増やすことを目指します。",
+    title: "ミッション",
+    desc: "歯科の現場を、テクノロジーでもっとなめらかに。電話・紙・手作業の負担を減らし、スタッフが患者と向き合う時間を増やします。",
   },
   {
     icon: HeartHandshake,
-    title: "私たちのビジョン",
-    desc: "歯科医院のDXを、規模や予算に関係なく誰もが始められるものに。フリープランから使えるクラウドで、地域の歯科医療を支えるインフラになります。",
+    title: "ビジョン",
+    desc: "歯科医院のDXを、規模や予算に関係なく誰もが始められるものに。地域医療を支えるインフラを目指します。",
   },
   {
-    icon: Building2,
+    icon: Sparkles,
     title: "現場発のものづくり",
-    desc: "歯学部に在籍する開発者が、21名の現役開業医の監修のもとで開発。机上の空論ではなく、実際の診療現場の声からプロダクトを磨き続けています。",
+    desc: "歯学部に在籍する開発者が、21名の現役開業医の監修のもとで開発。実際の診療現場の声からプロダクトを磨き続けます。",
   },
+];
+
+const overview: { label: string; value: string; isEmail?: boolean }[] = [
+  { label: "会社名", value: COMPANY.name },
+  { label: "事業内容", value: COMPANY.business },
+  { label: "主要プロダクト", value: COMPANY.product },
+  { label: "設立", value: COMPANY.established },
+  { label: "お問い合わせ", value: COMPANY.email, isEmail: true },
 ];
 
 export function Company() {
   return (
-    <section id="company" style={{ backgroundColor: GREEN_LIGHT }} className="py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-[12px] font-bold tracking-widest uppercase mb-4" style={{ color: GREEN }}>
-            Company
-          </p>
-          <h2 className="text-[28px] md:text-[40px] font-black tracking-tight" style={{ color: TEXT }}>
+    <section id="company" className="py-24 lg:py-32">
+      <div className="max-w-site mx-auto px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="eyebrow">Company</span>
+          <h2 className="mt-4 font-jp font-black tracking-tight text-ink text-[30px] lg:text-[42px] leading-[1.2]">
             運営会社について
           </h2>
-          <p className="mt-4 text-[15px] text-gray-500">
-            Arche は <strong style={{ color: TEXT }}>{COMPANY.name}</strong> が開発・運営しています。
+          <p className="mt-5 text-[15.5px] leading-[1.9] text-ink-muted">
+            Arche は <span className="font-bold text-ink">{COMPANY.name}</span> が開発・運営しています。
           </p>
         </div>
 
-        {/* 価値観カード3枚 */}
-        <div className="grid md:grid-cols-3 gap-5 mb-14">
+        <div className="mt-14 grid lg:grid-cols-3 gap-4 lg:gap-5">
           {values.map((v) => {
             const Icon = v.icon;
             return (
-              <div key={v.title} className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
-                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: GREEN_LIGHT }}>
-                  <Icon className="w-5 h-5" style={{ color: GREEN }} strokeWidth={1.75} />
-                </div>
-                <h3 className="text-[16px] font-black mb-2" style={{ color: TEXT }}>{v.title}</h3>
-                <p className="text-[13px] leading-[1.9] text-gray-500">{v.desc}</p>
+              <div key={v.title} className="rounded-3xl border border-emerald-100 bg-white p-7 shadow-soft">
+                <span className="grid place-items-center w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600">
+                  <Icon className="w-5 h-5" strokeWidth={1.9} />
+                </span>
+                <h3 className="mt-4 text-[17px] font-bold text-ink">{v.title}</h3>
+                <p className="mt-2 text-[13.5px] leading-[1.9] text-ink-muted">{v.desc}</p>
               </div>
             );
           })}
         </div>
 
-        {/* 会社概要テーブル */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden max-w-3xl mx-auto">
-          <div className="px-7 py-5 border-b border-gray-100">
-            <h3 className="text-[16px] font-black" style={{ color: TEXT }}>会社概要</h3>
+        <div className="mt-6 mx-auto max-w-3xl rounded-3xl border border-emerald-100 bg-white shadow-soft overflow-hidden">
+          <div className="px-7 py-5 border-b border-emerald-100 bg-emerald-50/50">
+            <h3 className="text-[15px] font-bold text-ink">会社概要</h3>
           </div>
           <dl>
             {overview.map((row, i) => (
-              <div key={row.label} className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-0 px-7 py-4 ${i < overview.length - 1 ? "border-b border-gray-50" : ""}`}>
-                <dt className="text-[13px] font-bold text-gray-500 w-full sm:w-40 shrink-0">{row.label}</dt>
-                <dd className="text-[13.5px] text-gray-800">
-                  {row.label === "お問い合わせ" ? (
-                    <a href={CONTACT_MAILTO} className="font-medium underline underline-offset-2 hover:opacity-70" style={{ color: GREEN }}>
+              <div
+                key={row.label}
+                className={`flex flex-col sm:flex-row sm:items-center px-7 py-4 ${
+                  i < overview.length - 1 ? "border-b border-emerald-50" : ""
+                }`}
+              >
+                <dt className="text-[13px] font-bold text-ink-muted w-full sm:w-44 shrink-0">
+                  {row.label}
+                </dt>
+                <dd className="text-[13.5px] text-ink mt-1 sm:mt-0">
+                  {row.isEmail ? (
+                    <a
+                      href={CONTACT_MAILTO}
+                      className="font-semibold text-emerald-700 underline underline-offset-2"
+                    >
                       {row.value}
                     </a>
                   ) : (
@@ -86,10 +88,13 @@ export function Company() {
           </dl>
         </div>
 
-        <div className="text-center mt-10">
-          <a href={CONTACT_MAILTO} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-bold text-white hover:opacity-90 transition-opacity" style={{ backgroundColor: TEXT }}>
+        <div className="mt-10 text-center">
+          <a
+            href={CONTACT_MAILTO}
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14.5px] font-bold text-white bg-ink hover:bg-ink-soft transition-colors"
+          >
             <Mail className="w-4 h-4" />
-            {CONTACT_EMAIL} へお問い合わせ
+            {CONTACT_EMAIL} へ問い合わせる
           </a>
         </div>
       </div>

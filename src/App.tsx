@@ -1,31 +1,31 @@
-import { Navigation } from "./components/Navigation";
+import { Nav } from "./components/Nav";
 import { Hero } from "./components/Hero";
-import { Problems } from "./components/Problems";
-import { ValueProps } from "./components/ValueProps";
+import { Trust } from "./components/Trust";
 import { Features } from "./components/Features";
+import { Solutions } from "./components/Solutions";
 import { HowItWorks } from "./components/HowItWorks";
 import { Pricing } from "./components/Pricing";
-import { Founder } from "./components/Founder";
+import { Story } from "./components/Story";
 import { Company } from "./components/Company";
 import { Faq } from "./components/Faq";
-import { Cta } from "./components/Cta";
+import { FinalCta } from "./components/FinalCta";
 import { Footer } from "./components/Footer";
 
 function App() {
   return (
     <div className="min-h-screen bg-white">
-      <Navigation />
+      <Nav />
       <main>
         <Hero />
-        <Problems />
-        <ValueProps />
+        <Trust />
         <Features />
+        <Solutions />
         <HowItWorks />
         <Pricing />
-        <Founder />
+        <Story />
         <Company />
         <Faq />
-        <Cta />
+        <FinalCta />
       </main>
       <Footer />
     </div>

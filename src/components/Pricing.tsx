@@ -1,163 +1,89 @@
-import { Check, Minus } from "lucide-react";
-import { APP_LINKS, COLORS, CONTACT_MAILTO } from "@/lib/site";
-
-const GREEN = COLORS.brand;
-const NAVY = "#0D112A";
-const TEXT = COLORS.navy;
-
-const plans = [
-  {
-    name: "フリー",
-    price: "¥0",
-    period: "永久無料",
-    desc: "小規模医院・お試しに",
-    cta: "今すぐ始める",
-    ctaHref: APP_LINKS.signup,
-    highlight: false,
-    features: [
-      { label: "スタッフ 1名", ok: true },
-      { label: "月間予約 100件", ok: true },
-      { label: "オンライン予約ページ", ok: true },
-      { label: "メールリマインダー", ok: true },
-      { label: "患者管理", ok: true },
-      { label: "データエクスポート", ok: false },
-      { label: "リコール機能", ok: false },
-      { label: "経営分析", ok: false },
-    ],
-  },
-  {
-    name: "スターター",
-    price: "¥4,980",
-    period: "/月（税込）",
-    desc: "成長中の医院に最適",
-    cta: "14日間無料で試す",
-    ctaHref: APP_LINKS.signup,
-    highlight: false,
-    features: [
-      { label: "スタッフ 3名", ok: true },
-      { label: "月間予約 無制限", ok: true },
-      { label: "オンライン予約ページ", ok: true },
-      { label: "メールリマインダー", ok: true },
-      { label: "患者管理", ok: true },
-      { label: "データエクスポート", ok: true },
-      { label: "リコール機能", ok: false },
-      { label: "経営分析", ok: false },
-    ],
-  },
-  {
-    name: "プロ",
-    price: "¥9,800",
-    period: "/月（税込）",
-    desc: "本格運用したい医院に",
-    cta: "14日間無料で試す",
-    ctaHref: APP_LINKS.signup,
-    highlight: true,
-    badge: "おすすめ",
-    features: [
-      { label: "スタッフ 無制限", ok: true },
-      { label: "月間予約 無制限", ok: true },
-      { label: "オンライン予約ページ", ok: true },
-      { label: "メールリマインダー", ok: true },
-      { label: "患者管理", ok: true },
-      { label: "データエクスポート", ok: true },
-      { label: "リコール機能", ok: true },
-      { label: "経営分析ダッシュボード", ok: true },
-    ],
-  },
-  {
-    name: "エンタープライズ",
-    price: "要相談",
-    period: "グループ・法人向け",
-    desc: "複数院・大規模医院に",
-    cta: "お問い合わせ",
-    ctaHref: CONTACT_MAILTO,
-    highlight: false,
-    features: [
-      { label: "複数院一括管理", ok: true },
-      { label: "プロの全機能", ok: true },
-      { label: "専任サポート担当", ok: true },
-      { label: "カスタム開発対応", ok: true },
-      { label: "SLA保証", ok: true },
-      { label: "請求書払い", ok: true },
-      { label: "カスタムレポート", ok: true },
-      { label: "API連携", ok: true },
-    ],
-  },
-];
+import { Check } from "lucide-react";
+import { PLANS, CONTACT_MAILTO, APP_LINKS } from "@/lib/site";
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-[12px] font-bold tracking-widest uppercase mb-4" style={{ color: GREEN }}>料金プラン</p>
-          <h2 className="text-[30px] md:text-[44px] font-black tracking-tight" style={{ color: TEXT }}>
-            医院規模に合わせて選べる
+    <section id="pricing" className="py-24 lg:py-32 bg-emerald-50/50 border-y border-emerald-100">
+      <div className="max-w-site mx-auto px-5 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="eyebrow">Pricing</span>
+          <h2 className="mt-4 font-jp font-black tracking-tight text-ink text-[30px] lg:text-[42px] leading-[1.2]">
+            医院の規模に合わせて、<span className="text-gradient">無理なく。</span>
           </h2>
-          <p className="mt-4 text-[16px] text-gray-500">
-            無料から始めて、成長に合わせてアップグレード。<br />
-            違約金・初期費用は一切かかりません。
+          <p className="mt-5 text-[15.5px] leading-[1.9] text-ink-muted">
+            初期費用は0円。フリープランから始めて、成長に合わせてアップグレードできます。
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 items-start">
-          {plans.map((plan) => (
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 items-stretch">
+          {PLANS.map((p) => (
             <div
-              key={plan.name}
-              className={`relative flex flex-col rounded-2xl overflow-hidden border ${plan.highlight ? "shadow-2xl" : "border-gray-200 shadow-sm hover:shadow-md transition-shadow"}`}
-              style={plan.highlight ? { backgroundColor: NAVY, borderColor: NAVY } : { backgroundColor: "white" }}
+              key={p.key}
+              className={`relative flex flex-col rounded-3xl p-7 ${
+                p.featured
+                  ? "bg-ink text-white shadow-[0_30px_70px_-25px_rgba(8,17,13,0.6)] ring-2 ring-emerald-500"
+                  : "bg-white border border-emerald-100 shadow-soft"
+              }`}
             >
-              {plan.highlight && plan.badge && (
-                <div className="absolute top-4 right-4">
-                  <span className="px-2.5 py-1 text-[10.5px] font-black rounded-full" style={{ backgroundColor: GREEN, color: "white" }}>
-                    {plan.badge}
-                  </span>
-                </div>
+              {p.featured && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500 text-white shadow">
+                  いちばん人気
+                </span>
               )}
 
-              <div className="px-6 pt-8 pb-6">
-                <p className="text-[11px] font-bold tracking-widest uppercase mb-2" style={{ color: plan.highlight ? "rgba(255,255,255,0.4)" : "#9CA3AF" }}>
-                  {plan.name}
-                </p>
-                <div className="flex items-baseline gap-1 mb-1">
-                  <span className="text-[34px] font-black" style={{ color: plan.highlight ? "white" : TEXT }}>{plan.price}</span>
-                </div>
-                <p className="text-[11px]" style={{ color: plan.highlight ? "rgba(255,255,255,0.35)" : "#9CA3AF" }}>{plan.period}</p>
-                <p className="mt-3 text-[12.5px] font-medium" style={{ color: plan.highlight ? "rgba(255,255,255,0.55)" : "#6B7280" }}>{plan.desc}</p>
+              <p
+                className={`text-[12px] font-bold tracking-[0.14em] uppercase ${
+                  p.featured ? "text-emerald-300" : "text-emerald-600"
+                }`}
+              >
+                {p.name}
+              </p>
+              <div className="mt-3 flex items-end gap-1">
+                <span className="text-[34px] font-black leading-none">{p.price}</span>
+                <span className={`text-[12px] mb-1 ${p.featured ? "text-white/55" : "text-ink-muted"}`}>
+                  {p.period}
+                </span>
               </div>
+              <p className={`mt-2 text-[12.5px] ${p.featured ? "text-white/65" : "text-ink-muted"}`}>
+                {p.tagline}
+              </p>
 
-              <div className="mx-6 h-px" style={{ backgroundColor: plan.highlight ? "rgba(255,255,255,0.08)" : "#F3F4F6" }} />
+              <div className={`my-6 h-px ${p.featured ? "bg-white/10" : "bg-emerald-100"}`} />
 
-              <ul className="px-6 py-6 space-y-3 flex-1">
-                {plan.features.map((f) => (
-                  <li key={f.label} className="flex items-start gap-2.5">
-                    {f.ok ? (
-                      <Check className="w-4 h-4 mt-0.5 shrink-0" style={{ color: plan.highlight ? "rgba(255,255,255,0.6)" : GREEN }} strokeWidth={2.5} />
-                    ) : (
-                      <Minus className="w-4 h-4 mt-0.5 shrink-0 opacity-20" style={{ color: plan.highlight ? "white" : "#9CA3AF" }} />
-                    )}
-                    <span className="text-[12.5px]" style={{ color: plan.highlight ? (f.ok ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.2)") : (f.ok ? "#374151" : "#D1D5DB") }}>
-                      {f.label}
+              <ul className="space-y-2.5 flex-1">
+                {p.points.map((pt) => (
+                  <li key={pt} className="flex items-start gap-2.5">
+                    <Check
+                      className={`w-4 h-4 mt-0.5 shrink-0 ${p.featured ? "text-emerald-400" : "text-emerald-600"}`}
+                      strokeWidth={3}
+                    />
+                    <span className={`text-[13px] ${p.featured ? "text-white/85" : "text-ink-soft"}`}>
+                      {pt}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div className="px-6 pb-8">
-                <a
-                  href={plan.ctaHref}
-                  className={`block text-center py-3 rounded-xl text-[13.5px] font-bold transition-all ${plan.highlight ? "bg-white hover:bg-gray-100" : "text-white hover:opacity-90"}`}
-                  style={plan.highlight ? { color: NAVY } : { backgroundColor: GREEN }}
-                >
-                  {plan.cta}
-                </a>
-              </div>
+              <a
+                href={CONTACT_MAILTO}
+                className={`mt-7 inline-flex items-center justify-center h-11 rounded-full text-[13.5px] font-bold transition-colors ${
+                  p.featured
+                    ? "bg-emerald-500 text-white hover:bg-emerald-400"
+                    : "bg-emerald-600 text-white hover:bg-emerald-700"
+                }`}
+              >
+                {p.key === "enterprise" ? "相談する" : "このプランで相談"}
+              </a>
             </div>
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[12.5px] text-gray-400">
-          全プラン14日間無料トライアル · クレジットカード不要 · 途中解約いつでもOK
+        <p className="mt-8 text-center text-[12.5px] text-ink-muted">
+          表示は税込・月額です。導入のご相談は無料。既にご利用中の医院は{" "}
+          <a href={APP_LINKS.login} className="font-semibold text-emerald-700 underline underline-offset-2">
+            こちらからログイン
+          </a>
+          。
         </p>
       </div>
     </section>

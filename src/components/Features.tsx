@@ -1,136 +1,130 @@
-import { Users, Bell, Clock, Shield, ChevronRight } from "lucide-react";
-import { APP_LINKS, COLORS } from "@/lib/site";
+import {
+  CalendarClock,
+  Users,
+  Bell,
+  RefreshCw,
+  BarChart3,
+  Star,
+  QrCode,
+  ClipboardList,
+  Clock,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
-const GREEN = COLORS.brand;
-const GREEN_LIGHT = COLORS.brandLight;
-const TEXT = COLORS.navy;
+type Feature = {
+  icon: LucideIcon;
+  title: string;
+  desc: string;
+  tag?: string;
+  className?: string;
+  accent?: boolean;
+};
 
-const mainFeatures = [
+const features: Feature[] = [
   {
-    id: "booking",
-    badge: "オンライン予約",
-    headline: "Arche 予約管理",
-    sub: "幅広い業務を大幅に業務効率化\n受付・患者の満足度を改善",
-    stat: "電話対応を最大 約85%削減",
-    statNote: "※Archeご利用医院の平均値（2025年実績）",
-    links: ["オンライン予約（定番）", "スタッフ・担当医設定", "診療メニュー管理", "キャンセル待ちリスト", "リマインダー配信"],
+    icon: CalendarClock,
+    title: "24時間オンライン予約",
+    desc: "スマホから24時間予約受付。診療メニュー・担当医・チェアごとに枠を設定でき、電話対応の負担を大きく減らします。",
+    className: "lg:col-span-2",
+    accent: true,
   },
   {
-    id: "patients",
-    badge: "患者・経営管理",
-    headline: "Arche 患者管理",
-    sub: "データにもとづく経営で\n患者満足度と来院数を最大化",
-    stat: "定期健診来院数 平均 +38%向上",
-    statNote: "※リコール機能利用医院の比較（2025年実績）",
-    links: ["患者情報一元管理（定番）", "リコール自動配信（定番）", "問診票デジタル化", "経営分析ダッシュボード", "データエクスポート"],
+    icon: Users,
+    title: "患者管理・カルテ",
+    desc: "来院履歴・連絡先・メモを一元管理。必要な情報にすぐたどり着けます。",
+  },
+  {
+    icon: Bell,
+    title: "リマインダー自動送信",
+    desc: "予約前日にメール / SMS / LINE で自動リマインド。無断キャンセルを抑えます。",
+    tag: "メール / SMS / LINE",
+  },
+  {
+    icon: RefreshCw,
+    title: "リコール自動化",
+    desc: "定期健診の時期が来た患者を自動抽出し、再来院をうながします。",
+  },
+  {
+    icon: Star,
+    title: "口コミ獲得",
+    desc: "満足した患者を自動でGoogleレビューへ誘導。低評価は院内フィードバックに振り分け、評判を守ります。",
+    tag: "NEW",
+    accent: true,
+  },
+  {
+    icon: QrCode,
+    title: "QRセルフ受付",
+    desc: "来院した患者がQRで受付。受付スタッフの負担を軽減します。",
+    tag: "NEW",
+  },
+  {
+    icon: BarChart3,
+    title: "経営分析レポート",
+    desc: "予約数・来院数・キャンセル率・売上を可視化し、データで意思決定。",
+    className: "lg:col-span-2",
+  },
+  {
+    icon: ClipboardList,
+    title: "問診のデジタル化",
+    desc: "Webで事前問診。受付の記入時間と転記の手間をゼロに。",
+  },
+  {
+    icon: Clock,
+    title: "スタッフ・勤怠（QR打刻）",
+    desc: "シフト管理とQR/PIN打刻、時給計算まで。スタッフ運営もまとめて。",
   },
 ];
-
-const subFeatures = [
-  { icon: Clock, title: "キャンセル待ち", desc: "空き枠が出たら候補患者に自動連絡。取りこぼしゼロ。" },
-  { icon: Shield, title: "セキュリティ", desc: "SSL暗号化・個人情報保護法準拠。国内サーバー管理。" },
-  { icon: Bell, title: "LINE連携（オプション）", desc: "LINEで予約確認・リマインダーを送信。開封率が高い。" },
-  { icon: Users, title: "複数スタッフ対応", desc: "担当医・衛生士ごとに予約枠を個別設定できます。" },
-];
-
-function FeatureMockup({ featureId }: { featureId: string }) {
-  return (
-    <div className="bg-white rounded-2xl shadow-[0_4px_30px_rgba(0,0,0,0.08)] border border-gray-100 overflow-hidden h-80 flex items-center justify-center">
-      <div className="w-full text-center p-8">
-        {featureId === "booking" ? (
-          <div className="space-y-2 text-left">
-            {["09:00 田中 美咲 / 定期健診", "10:00 山田 由紀 / ホワイトニング", "10:30 鈴木 大輔 / 矯正相談", "11:00 伊藤 さくら / クリーニング", "14:00 佐藤 健太 / 虫歯治療"].map((line, i) => (
-              <div key={i} className="text-[12px] px-3 py-2 rounded-lg" style={{ backgroundColor: i < 2 ? "#F3F4F6" : GREEN_LIGHT, color: i < 2 ? "#9CA3AF" : TEXT }}>
-                {line}
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {[["今月の予約", "247件"], ["リコール配信", "38名"], ["キャンセル率", "3.2%"]].map(([label, value]) => (
-              <div key={label} className="flex items-center justify-between px-4 py-2.5 rounded-lg bg-gray-50">
-                <span className="text-[12px] text-gray-500">{label}</span>
-                <span className="text-[16px] font-black" style={{ color: GREEN }}>{value}</span>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export function Features() {
   return (
-    <section id="features" className="bg-white py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <h2 className="text-[26px] md:text-[38px] font-black tracking-tight" style={{ color: TEXT }}>
-            Archeのサービス
+    <section id="features" className="py-24 lg:py-32">
+      <div className="max-w-site mx-auto px-5 lg:px-8">
+        <div className="max-w-2xl">
+          <span className="eyebrow">Features</span>
+          <h2 className="mt-4 font-jp font-black tracking-tight text-ink text-[30px] lg:text-[42px] leading-[1.2]">
+            医院に必要な機能を、
+            <br className="hidden sm:block" />
+            <span className="text-gradient">まるごとひとつに。</span>
           </h2>
-          <p className="mt-3 text-[15px] text-gray-500">
-            歯科医院のあらゆる業務に対応できる豊富な機能で、あらゆる課題を解決します
+          <p className="mt-5 text-[15.5px] leading-[1.9] text-ink-muted">
+            予約・受付から、患者の定着、評判づくり、経営判断まで。
+            複数のツールを契約せずに、Arche だけで完結します。
           </p>
         </div>
 
-        <div className="space-y-16">
-          {mainFeatures.map((feature, idx) => (
-            <div key={feature.id} className="grid md:grid-cols-2 gap-10 items-start">
-              <div className={idx % 2 === 1 ? "md:order-2" : ""}>
-                <span className="inline-flex items-center px-3 py-1.5 rounded-full text-[11px] font-bold mb-4" style={{ backgroundColor: GREEN, color: "#2A221A" }}>
-                  {feature.badge}
-                </span>
-                <h3 className="text-[24px] md:text-[30px] font-black leading-tight mb-2" style={{ color: GREEN }}>
-                  {feature.headline}
-                </h3>
-                <p className="text-[15px] text-gray-600 mb-5 whitespace-pre-line">{feature.sub}</p>
-
-                <div className="bg-gray-50 rounded-xl p-4 mb-6 flex items-start gap-3">
-                  <div>
-                    <p className="text-[22px] font-black" style={{ color: TEXT }}>{feature.stat}</p>
-                    <p className="text-[10.5px] text-gray-400 mt-0.5">{feature.statNote}</p>
-                  </div>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+          {features.map((f) => {
+            const Icon = f.icon;
+            return (
+              <article
+                key={f.title}
+                className={`group relative rounded-3xl border p-6 lg:p-7 transition-all hover:-translate-y-1 ${
+                  f.accent
+                    ? "border-emerald-200 bg-gradient-to-br from-emerald-50 to-white shadow-soft"
+                    : "border-emerald-100 bg-white hover:shadow-soft"
+                } ${f.className ?? ""}`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="grid place-items-center w-11 h-11 rounded-2xl bg-emerald-600 text-white shadow-[0_8px_18px_-8px_rgba(5,150,105,0.9)]">
+                    <Icon className="w-5 h-5" />
+                  </span>
+                  {f.tag && (
+                    <span
+                      className={`text-[10.5px] font-bold px-2.5 py-1 rounded-full ${
+                        f.tag === "NEW"
+                          ? "bg-amber-100 text-amber-700"
+                          : "bg-emerald-100 text-emerald-700"
+                      }`}
+                    >
+                      {f.tag}
+                    </span>
+                  )}
                 </div>
-
-                <div className="grid grid-cols-1 gap-2">
-                  {feature.links.map((label) => (
-                    <div key={label} className="flex items-center justify-between px-4 py-2.5 rounded-lg border border-gray-100">
-                      <span className="text-[13px] font-medium text-gray-700">{label}</span>
-                      <ChevronRight className="w-4 h-4 text-gray-300" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className={idx % 2 === 1 ? "md:order-1" : ""}>
-                <FeatureMockup featureId={feature.id} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-16 pt-14 border-t border-gray-100">
-          <h3 className="text-[18px] font-black mb-6 text-center" style={{ color: TEXT }}>主な機能</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {subFeatures.map((f) => {
-              const Icon = f.icon;
-              return (
-                <div key={f.title} className="p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-md transition-shadow">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Icon className="w-4 h-4" style={{ color: GREEN }} />
-                    <span className="text-[13.5px] font-bold" style={{ color: TEXT }}>{f.title}</span>
-                  </div>
-                  <p className="text-[12.5px] leading-[1.7] text-gray-500">{f.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="text-center mt-12">
-          <a href={APP_LINKS.signup} className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[14px] font-bold hover:opacity-90 transition-opacity" style={{ backgroundColor: GREEN, color: "#2A221A" }}>
-            すべての機能を無料で試す →
-          </a>
+                <h3 className="mt-4 text-[17px] font-bold text-ink">{f.title}</h3>
+                <p className="mt-2 text-[13.5px] leading-[1.85] text-ink-muted">{f.desc}</p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
