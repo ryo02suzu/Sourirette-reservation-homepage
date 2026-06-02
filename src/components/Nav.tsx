@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Menu, X, LogIn, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { Logo } from "./Logo";
 import { APP_LINKS, CONTACT_MAILTO } from "@/lib/site";
 
@@ -27,9 +27,7 @@ export function Nav() {
     <header className="fixed top-0 inset-x-0 z-50">
       <div
         className={`transition-all duration-300 ${
-          scrolled
-            ? "bg-white/85 backdrop-blur-md border-b border-emerald-100 shadow-[0_1px_0_rgba(5,150,105,0.06)]"
-            : "bg-transparent border-b border-transparent"
+          scrolled ? "bg-night-950/70 backdrop-blur-xl border-b border-white/10" : "border-b border-transparent"
         }`}
       >
         <nav className="max-w-site mx-auto px-5 lg:px-8 h-[68px] flex items-center gap-8">
@@ -42,7 +40,7 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-[14px] font-medium text-ink-soft hover:text-emerald-700 transition-colors"
+                className="text-[13.5px] font-medium text-slate-400 hover:text-white transition-colors"
               >
                 {l.label}
               </a>
@@ -52,14 +50,14 @@ export function Nav() {
           <div className="hidden lg:flex items-center gap-2.5 ml-auto">
             <a
               href={APP_LINKS.login}
-              className="inline-flex items-center gap-1.5 h-10 px-4 rounded-full text-[13.5px] font-semibold text-ink-soft hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
+              className="inline-flex items-center h-10 px-4 rounded-full text-[13.5px] font-semibold text-slate-300 hover:text-white hover:bg-white/5 transition-colors"
             >
-              <LogIn className="w-4 h-4" />
               ログイン
             </a>
             <a
               href={CONTACT_MAILTO}
-              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13.5px] font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-[0_8px_20px_-8px_rgba(5,150,105,0.8)] transition-colors"
+              className="group relative inline-flex items-center gap-1.5 h-10 px-5 rounded-full text-[13.5px] font-bold text-night-950 bg-gradient-to-r from-emerald-300 to-emerald-500 hover:to-emerald-400 transition-all"
+              style={{ boxShadow: "0 8px 26px -10px rgba(16,185,129,0.9)" }}
             >
               導入のご相談
               <ArrowRight className="w-4 h-4" />
@@ -67,7 +65,7 @@ export function Nav() {
           </div>
 
           <button
-            className="lg:hidden ml-auto p-2 -mr-2 text-ink"
+            className="lg:hidden ml-auto p-2 -mr-2 text-white"
             onClick={() => setOpen((v) => !v)}
             aria-label="メニュー"
           >
@@ -76,14 +74,14 @@ export function Nav() {
         </nav>
 
         {open && (
-          <div className="lg:hidden border-t border-emerald-100 bg-white">
+          <div className="lg:hidden border-t border-white/10 bg-night-950/95 backdrop-blur-xl">
             <div className="px-5 py-4 space-y-1">
               {links.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block py-3 text-[15px] font-medium text-ink border-b border-gray-100"
+                  className="block py-3 text-[15px] font-medium text-slate-200 border-b border-white/5"
                 >
                   {l.label}
                 </a>
@@ -91,14 +89,13 @@ export function Nav() {
               <div className="pt-4 grid grid-cols-2 gap-2.5">
                 <a
                   href={APP_LINKS.login}
-                  className="inline-flex items-center justify-center gap-1.5 h-11 rounded-full text-[14px] font-semibold border border-emerald-200 text-emerald-700"
+                  className="inline-flex items-center justify-center h-11 rounded-full text-[14px] font-semibold border border-white/15 text-white"
                 >
-                  <LogIn className="w-4 h-4" />
                   ログイン
                 </a>
                 <a
                   href={CONTACT_MAILTO}
-                  className="inline-flex items-center justify-center gap-1.5 h-11 rounded-full text-[14px] font-bold text-white bg-emerald-600"
+                  className="inline-flex items-center justify-center h-11 rounded-full text-[14px] font-bold text-night-950 bg-gradient-to-r from-emerald-300 to-emerald-500"
                 >
                   導入のご相談
                 </a>

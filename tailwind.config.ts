@@ -5,7 +5,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Arche ブランド：テーマ緑 #15803d を基調にしたエメラルド系
         emerald: {
           50: "#ecfdf5",
           100: "#d1fae5",
@@ -18,43 +17,39 @@ export default {
           800: "#065f46",
           900: "#064e3b",
         },
-        ink: {
-          DEFAULT: "#08110d",
-          soft: "#1f2a25",
-          muted: "#5b6b63",
+        // ダークの土台（わずかに緑みのある黒〜濃いスレート）
+        night: {
+          950: "#05080a",
+          900: "#070b0e",
+          800: "#0b1116",
+          700: "#11181e",
         },
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', '"Noto Sans JP"', "system-ui", "sans-serif"],
+        display: ['"Space Grotesk"', '"Noto Sans JP"', "system-ui", "sans-serif"],
         jp: ['"Noto Sans JP"', "system-ui", "sans-serif"],
       },
-      maxWidth: {
-        site: "1200px",
-      },
-      borderRadius: {
-        "4xl": "2rem",
-      },
-      boxShadow: {
-        soft: "0 1px 2px rgba(8,17,13,0.04), 0 8px 30px rgba(8,17,13,0.06)",
-        glow: "0 20px 60px -20px rgba(5,150,105,0.45)",
-      },
+      maxWidth: { site: "1200px" },
+      borderRadius: { "4xl": "2rem" },
       keyframes: {
-        floaty: {
-          "0%,100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+        floaty: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-10px)" } },
+        fadeUp: { from: { opacity: "0", transform: "translateY(22px)" }, to: { opacity: "1", transform: "translateY(0)" } },
+        auroraA: {
+          "0%,100%": { transform: "translate(0,0) scale(1)" },
+          "50%": { transform: "translate(6%,-8%) scale(1.15)" },
         },
-        fadeUp: {
-          from: { opacity: "0", transform: "translateY(18px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
+        auroraB: {
+          "0%,100%": { transform: "translate(0,0) scale(1.1)" },
+          "50%": { transform: "translate(-8%,6%) scale(0.95)" },
         },
-        shimmer: {
-          "0%": { backgroundPosition: "0% 50%" },
-          "100%": { backgroundPosition: "100% 50%" },
-        },
+        shimmer: { "0%": { backgroundPosition: "200% 0" }, "100%": { backgroundPosition: "-200% 0" } },
       },
       animation: {
         floaty: "floaty 6s ease-in-out infinite",
-        fadeUp: "fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both",
+        fadeUp: "fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both",
+        auroraA: "auroraA 16s ease-in-out infinite",
+        auroraB: "auroraB 20s ease-in-out infinite",
       },
     },
   },

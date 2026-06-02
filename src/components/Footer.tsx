@@ -27,28 +27,23 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-white">
+    <footer className="relative border-t border-white/10 bg-night-950">
       <div className="max-w-site mx-auto px-5 lg:px-8 pt-16 pb-10">
         <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
           <div>
-            <Logo onDark textClassName="text-[20px]" />
-            <p className="mt-4 text-[13px] leading-[1.9] text-white/60 max-w-xs">
-              歯科医院のための予約・患者管理クラウド。予約から経営まで、医院の“まわす仕事”をひとつに。
+            <Logo />
+            <p className="mt-4 text-[13px] leading-[1.9] text-slate-500 max-w-xs">
+              歯科医院のための予約・経営クラウド。予約から経営まで、医院の“まわす仕事”をひとつに。
             </p>
           </div>
 
           {cols.map((col) => (
             <div key={col.heading}>
-              <p className="text-[12px] font-bold tracking-wider text-emerald-300 uppercase">
-                {col.heading}
-              </p>
+              <p className="text-[12px] font-bold tracking-wider text-emerald-300/80 uppercase">{col.heading}</p>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((l) => (
                   <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className="text-[13.5px] text-white/70 hover:text-white transition-colors"
-                    >
+                    <a href={l.href} className="text-[13.5px] text-slate-400 hover:text-white transition-colors">
                       {l.label}
                     </a>
                   </li>
@@ -59,8 +54,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-7 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[12px] text-white/50">© 2026 {COMPANY.name}</p>
-          <p className="text-[12px] text-white/40">Arche — dental clinic cloud</p>
+          <p className="text-[12px] text-slate-500">© 2026 {COMPANY.name}</p>
+          <p className="text-[12px] text-slate-600 font-display">Arche — dental clinic cloud</p>
         </div>
       </div>
     </footer>
