@@ -37,10 +37,18 @@ jobs:
         run: npm ci
 
       - name: Build
-        # プロジェクトページのサブパスを base に設定してビルド
-        env:
-          VITE_BASE: /${{ github.event.repository.name }}/
-        run: npm run build
+        # リポジトリ名に応じて base を自動決定：
+        #   <owner>.github.io（ユーザーサイト）→ ルート配信なので "/"
+        #   それ以外（プロジェクトページ）       → "/<repo>/"
+        run: |
+          REPO_NAME="${GITHUB_REPOSITORY#*/}"
+          if [ "$REPO_NAME" = "${GITHUB_REPOSITORY_OWNER}.github.io" ]; then
+            export VITE_BASE="/"
+          else
+            export VITE_BASE="/${REPO_NAME}/"
+          fi
+          echo "Using VITE_BASE=$VITE_BASE"
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
