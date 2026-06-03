@@ -1,10 +1,10 @@
 import { Nav } from "./components/Nav";
-import { HeroCarousel } from "./components/HeroCarousel";
+import { HeroProduct } from "./components/HeroProduct";
 import { SupervisionWall } from "./components/SupervisionWall";
-import { News } from "./components/News";
-import { Business } from "./components/Business";
+import { ExtremeFocus } from "./components/ExtremeFocus";
 import { Reasons } from "./components/Reasons";
-import { ArcheHighlight } from "./components/ArcheHighlight";
+import { Business } from "./components/Business";
+import { News } from "./components/News";
 import { AboutBand } from "./components/AboutBand";
 import { Company } from "./components/Company";
 import { ContactBand } from "./components/ContactBand";
@@ -15,12 +15,12 @@ function App() {
     <div className="min-h-screen bg-white">
       <Nav />
       <main>
-        <HeroCarousel />
+        <HeroProduct />
         <SupervisionWall />
-        <News />
-        <Business />
+        <ExtremeFocus />
         <Reasons />
-        <ArcheHighlight />
+        <Business />
+        <News />
         <AboutBand />
         <Company />
         <ContactBand />
