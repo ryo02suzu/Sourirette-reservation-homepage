@@ -29,10 +29,17 @@ export default {
       keyframes: {
         fadeUp: { from: { opacity: "0", transform: "translateY(16px)" }, to: { opacity: "1", transform: "translateY(0)" } },
         kenburns: { from: { transform: "scale(1.06)" }, to: { transform: "scale(1)" } },
+        marquee: { from: { transform: "translateX(0)" }, to: { transform: "translateX(-50%)" } },
+        shine: { "0%": { transform: "translateX(-120%)" }, "60%,100%": { transform: "translateX(220%)" } },
+        floaty: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-8px)" } },
+        pulseRing: { "0%": { transform: "scale(0.9)", opacity: "0.7" }, "100%": { transform: "scale(2.2)", opacity: "0" } },
       },
       animation: {
         fadeUp: "fadeUp 0.7s ease both",
         kenburns: "kenburns 7s ease-out both",
+        marquee: "marquee 32s linear infinite",
+        floaty: "floaty 6s ease-in-out infinite",
+        pulseRing: "pulseRing 2.2s ease-out infinite",
       },
     },
   },

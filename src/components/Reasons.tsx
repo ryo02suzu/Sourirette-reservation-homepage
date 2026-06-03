@@ -1,4 +1,5 @@
 import { IllustBooking, IllustReminder, IllustReview } from "./Illust";
+import { Reveal, Stagger, StaggerItem } from "@/lib/motion";
 
 const reasons = [
   {
@@ -24,7 +25,7 @@ const reasons = [
 export function Reasons() {
   return (
     <section className="max-w-site mx-auto px-6 py-20 lg:py-28">
-      <div className="text-center">
+      <Reveal className="text-center">
         <p className="sect-label">Why Arche</p>
         <h2 className="mt-3 sect-title text-[28px] lg:text-[38px]">
           選ばれるのには、<span className="text-brand">理由</span>があります。
@@ -32,13 +33,13 @@ export function Reasons() {
         <p className="mt-4 text-[15px] leading-[1.8] text-sub">
           現場の動線にあわせて設計した、歯科医院のための予約・経営クラウド。
         </p>
-      </div>
+      </Reveal>
 
-      <div className="mt-14 grid md:grid-cols-3 gap-7">
+      <Stagger className="mt-14 grid md:grid-cols-3 gap-7">
         {reasons.map((r) => {
           const Illust = r.Illust;
           return (
-            <div key={r.no} className="group">
+            <StaggerItem key={r.no} className="group">
               <div className="rounded-2xl bg-mist overflow-hidden p-4 transition-transform duration-300 group-hover:-translate-y-1.5">
                 <Illust />
               </div>
@@ -47,10 +48,10 @@ export function Reasons() {
                 <h3 className="text-[18px] font-bold text-ink">{r.title}</h3>
               </div>
               <p className="mt-2.5 text-[14px] leading-[1.85] text-sub">{r.body}</p>
-            </div>
+            </StaggerItem>
           );
         })}
-      </div>
+      </Stagger>
     </section>
   );
 }

@@ -1,4 +1,5 @@
 import { asset } from "@/lib/site";
+import { Reveal, CountUp } from "@/lib/motion";
 
 const fields = [
   "一般歯科", "小児歯科", "矯正歯科", "口腔外科",
@@ -11,18 +12,18 @@ export function SupervisionWall() {
     <section className="bg-mist border-b border-line">
       <div className="max-w-site mx-auto px-6 py-12 lg:py-16">
         <div className="grid lg:grid-cols-[1fr_auto] gap-8 lg:gap-12 items-center">
-          <div>
+          <Reveal>
             <p className="sect-label">Supervision</p>
             <h2 className="mt-2 sect-title text-[20px] lg:text-[26px] leading-[1.5]">
-              <span className="text-brand">21名の現役開業医</span>が、現場視点で監修。
+              <span className="text-brand"><CountUp to={21} suffix="名" />の現役開業医</span>が、現場視点で監修。
             </h2>
             <p className="mt-3 text-[13.5px] text-sub leading-[1.8]">
               院長・開業医・大学非常勤講師（歯科）など、幅広い診療領域の先生方の声をプロダクトに反映しています。
             </p>
-          </div>
+          </Reveal>
 
           {/* アバタークラスタ */}
-          <div className="flex items-center">
+          <Reveal delay={0.1}>
             <div className="flex -space-x-3">
               {avatars.map((a, i) => (
                 <span
@@ -37,18 +38,20 @@ export function SupervisionWall() {
                 +12
               </span>
             </div>
-          </div>
+          </Reveal>
         </div>
 
-        {/* 対応領域チップ（ロゴウォール代替） */}
+        {/* 対応領域マーキー（無限スクロール） */}
         <div className="mt-9 pt-7 border-t border-line">
           <p className="text-[11.5px] font-semibold text-sub mb-3">対応診療領域</p>
-          <div className="flex flex-wrap gap-2.5">
-            {fields.map((f) => (
-              <span key={f} className="inline-flex items-center text-[12.5px] text-ink/80 bg-white border border-line rounded-full px-3.5 py-1.5">
-                {f}
-              </span>
-            ))}
+          <div className="marquee-mask overflow-hidden">
+            <div className="marquee-track gap-2.5 pr-2.5">
+              {[...fields, ...fields].map((f, i) => (
+                <span key={i} className="shrink-0 inline-flex items-center text-[12.5px] text-ink/80 bg-white border border-line rounded-full px-3.5 py-1.5">
+                  {f}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

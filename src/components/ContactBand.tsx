@@ -15,7 +15,7 @@ export function ContactBand() {
               ご相談・お見積もりは無料です。まずはお問い合わせください。
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <a href={CONTACT_MAILTO} className="inline-flex items-center gap-2 px-8 py-3.5 rounded-sm text-[16px] font-bold text-brand bg-white hover:bg-emerald-50 transition-colors">
+              <a href={CONTACT_MAILTO} className="shine-btn inline-flex items-center gap-2 px-8 py-3.5 rounded-sm text-[16px] font-bold text-brand bg-white hover:bg-emerald-50 transition-colors">
                 <Mail className="w-4 h-4" /> お問い合わせ
               </a>
               <a href={CONTACT_MAILTO} className="inline-flex items-center gap-1.5 text-[15px] font-semibold text-white hover:gap-2.5 transition-all">

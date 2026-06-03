@@ -118,7 +118,7 @@ export function HeroProduct() {
             <motion.div variants={item} className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
               <a
                 href={CONTACT_MAILTO}
-                className="bg-brand text-white px-8 py-4 rounded-full text-[16px] font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark hover:scale-[1.03] transition-all duration-300"
+                className="shine-btn bg-brand text-white px-8 py-4 rounded-full text-[16px] font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark hover:scale-[1.03] transition-all duration-300"
               >
                 導入のご相談・資料請求 →
               </a>

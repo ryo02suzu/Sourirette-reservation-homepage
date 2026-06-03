@@ -34,4 +34,25 @@
     @apply inline-block w-1 h-6 mr-3 align-[-2px] rounded-full;
     background: linear-gradient(#0a8f5b, #34d399);
   }
+
+  /* ボタンの通り過ぎる光沢 */
+  .shine-btn { position: relative; overflow: hidden; }
+  .shine-btn::after {
+    content: "";
+    position: absolute; top: 0; bottom: 0; width: 40%;
+    background: linear-gradient(110deg, transparent, rgba(255,255,255,0.35), transparent);
+    transform: translateX(-120%);
+  }
+  .shine-btn:hover::after { animation: shine 0.9s ease; }
+
+  /* マーキー（無限スクロール）。子を2セット並べて使う */
+  .marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+  }
 }
