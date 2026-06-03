@@ -24,6 +24,9 @@ export function Business() {
             >
               <div className="relative h-44 overflow-hidden">
                 <img src={asset(s.img)} alt={s.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                {"star" in s && s.star && (
+                  <span className="absolute top-3 left-3 text-[11px] font-bold text-brand-deep bg-white rounded-sm px-2.5 py-1 shadow-sm">PICK UP</span>
+                )}
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-baseline gap-3">

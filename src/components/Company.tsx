@@ -3,7 +3,7 @@ import { COMPANY } from "@/lib/site";
 const overview: { label: string; value: string }[] = [
   { label: "会社名", value: COMPANY.name },
   { label: "事業内容", value: COMPANY.business },
-  { label: "主要プロダクト", value: "Arche（歯科医院向け 予約・経営クラウド）" },
+  { label: "主要サービス", value: "ホームページ制作／Arche（予約・経営）／Q-re（クチコミ増援）／シカエル（審美歯科）" },
   { label: "設立", value: COMPANY.established },
   { label: "お問い合わせ", value: COMPANY.email },
 ];
