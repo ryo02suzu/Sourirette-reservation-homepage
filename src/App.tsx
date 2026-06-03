@@ -1,7 +1,9 @@
 import { Nav } from "./components/Nav";
 import { HeroCarousel } from "./components/HeroCarousel";
+import { SupervisionWall } from "./components/SupervisionWall";
 import { News } from "./components/News";
 import { Business } from "./components/Business";
+import { Reasons } from "./components/Reasons";
 import { ArcheHighlight } from "./components/ArcheHighlight";
 import { AboutBand } from "./components/AboutBand";
 import { Company } from "./components/Company";
@@ -14,8 +16,10 @@ function App() {
       <Nav />
       <main>
         <HeroCarousel />
+        <SupervisionWall />
         <News />
         <Business />
+        <Reasons />
         <ArcheHighlight />
         <AboutBand />
         <Company />
