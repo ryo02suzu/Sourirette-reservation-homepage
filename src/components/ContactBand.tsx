@@ -9,7 +9,7 @@ export function ContactBand() {
           <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-white/10" />
           <div className="relative">
             <h2 className="text-[26px] lg:text-[36px] font-bold text-white leading-[1.3]">
-              Web制作・EC・Arche のご相談は、お気軽に。
+予約・クチコミ・EC・HP…ITのご相談は、お気軽に。
             </h2>
             <p className="mt-4 text-[15px] text-white/85">
               ご相談・お見積もりは無料です。まずはお問い合わせください。

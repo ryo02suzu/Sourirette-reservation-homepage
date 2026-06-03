@@ -9,11 +9,13 @@ export function Business() {
           <p className="sect-label">Business</p>
           <h2 className="mt-3 sect-title text-[28px] lg:text-[38px]">事業・サービス</h2>
           <p className="mt-4 text-[15px] leading-[1.8] text-sub">
-            Web制作・EC構築から、自社プロダクトの開発まで。Sourirette の3つの事業領域。
+            予約・経営、クチコミ、EC、ホームページ──「ITのことならなんでも」。
+            <br className="hidden sm:block" />
+            医院・お店の集患と経営を、まるごと支援します。
           </p>
         </div>
 
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((s) => (
             <a
               key={s.key}
@@ -22,9 +24,6 @@ export function Business() {
             >
               <div className="relative h-44 overflow-hidden">
                 <img src={asset(s.img)} alt={s.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                {"badge" in s && s.badge && (
-                  <span className="absolute top-3 left-3 text-[11px] font-bold text-white bg-brand rounded-sm px-2.5 py-1">{s.badge}</span>
-                )}
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <div className="flex items-baseline gap-3">

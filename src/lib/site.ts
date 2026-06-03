@@ -42,14 +42,45 @@ export const COMPANY = {
   product: "Arche（アルケー）",
   email: CONTACT_EMAIL,
   established: "2025年",
-  business: "Webサイト制作、ECサイト構築、歯科医院向け予約・経営クラウド「Arche」の開発・運営",
+  business:
+    "予約・経営管理システム「Arche」、Googleクチコミ増援サービス、ECサイト「シカエル」、ホームページ制作、その他IT全般",
 } as const;
 
-/** 事業・サービス */
+/** 事業・サービス（実サービス） */
 export const SERVICES = [
   {
-    key: "web",
+    key: "arche",
     no: "01",
+    name: "予約・経営管理システム「Arche」",
+    en: "Reservation & Management",
+    desc: "歯科医院向けのオンライン予約に加え、リコール・リマインダー・経営分析まで。予約から医院経営までまるごとサポートします。",
+    img: "img/clinic-wide.jpg",
+    href: "#arche",
+    cta: "Arche を見る",
+  },
+  {
+    key: "review",
+    no: "02",
+    name: "Googleクチコミ増援サービス",
+    en: "Review Boost",
+    desc: "来院後のアンケートで満足度を測り、高評価の方をGoogleクチコミへご案内。低評価は院内へのフィードバックに。評判づくりと改善を同時に進めます。",
+    img: "img/smile.jpg",
+    href: CONTACT_MAILTO,
+    cta: "相談する",
+  },
+  {
+    key: "ec",
+    no: "03",
+    name: "ECサイト「シカエル」",
+    en: "E-Commerce",
+    desc: "ネットショップの立ち上げから運用まで。自社EC「シカエル」で培ったノウハウで、売れるオンラインストアをご一緒します。",
+    img: "img/ec.jpg",
+    href: CONTACT_MAILTO,
+    cta: "相談する",
+  },
+  {
+    key: "web",
+    no: "04",
     name: "ホームページ制作",
     en: "Web Production",
     desc: "デザインから実装・公開まで一貫対応。成果につながる、速くて美しいサイトを制作します。",
@@ -58,26 +89,14 @@ export const SERVICES = [
     cta: "制作を相談する",
   },
   {
-    key: "ec",
-    no: "02",
-    name: "ECサイト構築",
-    en: "E-Commerce",
-    desc: "ネットショップの立ち上げ・移行・運用改善まで。売れるオンラインストアをつくります。",
-    img: "img/ec.jpg",
+    key: "it",
+    no: "05",
+    name: "その他 IT全般",
+    en: "IT Support",
+    desc: "業務効率化・ツール導入・自動化など、「ITのことならなんでも」。お困りごとからご相談ください。",
+    img: "img/team.jpg",
     href: CONTACT_MAILTO,
-    cta: "ECを相談する",
-    badge: "準備中",
-  },
-  {
-    key: "arche",
-    no: "03",
-    name: "Arche（予約・経営クラウド）",
-    en: "SaaS Product",
-    desc: "歯科医院向けの予約・患者管理・リコール・口コミ・経営分析をひとつに。自社開発のSaaS。",
-    img: "img/clinic-wide.jpg",
-    href: "#arche",
-    cta: "Arche を見る",
-    badge: "提供中",
+    cta: "相談する",
   },
 ] as const;
 

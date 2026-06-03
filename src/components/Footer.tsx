@@ -5,9 +5,11 @@ const cols = [
   {
     heading: "事業・サービス",
     links: [
+      { label: "予約・経営管理「Arche」", href: "#arche" },
+      { label: "Googleクチコミ増援", href: "#services" },
+      { label: "ECサイト「シカエル」", href: "#services" },
       { label: "ホームページ制作", href: "#services" },
-      { label: "ECサイト構築", href: "#services" },
-      { label: "Arche（予約・経営クラウド）", href: "#arche" },
+      { label: "その他 IT全般", href: "#services" },
     ],
   },
   {
