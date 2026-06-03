@@ -4,6 +4,7 @@ import { HeroProduct } from "./components/HeroProduct";
 import { SupervisionWall } from "./components/SupervisionWall";
 import { ExtremeFocus } from "./components/ExtremeFocus";
 import { Reasons } from "./components/Reasons";
+import { EditorialBand } from "./components/EditorialBand";
 import { Business } from "./components/Business";
 import { News } from "./components/News";
 import { AboutBand } from "./components/AboutBand";
@@ -22,6 +23,7 @@ function App() {
         <SupervisionWall />
         <ExtremeFocus />
         <Reasons />
+        <EditorialBand />
         <Business />
         <News />
         <AboutBand />

@@ -13,7 +13,7 @@ export function ExtremeFocus() {
     <section id="arche" className="bg-brand-deep text-white">
       <div className="max-w-site mx-auto px-6 py-24 lg:py-32 space-y-16 lg:space-y-20">
         <Reveal>
-          <h2 className="text-[28px] sm:text-[40px] lg:text-[46px] font-extrabold text-center tracking-tight max-w-4xl mx-auto leading-[1.3]">
+          <h2 className="font-jp text-[28px] sm:text-[42px] lg:text-[50px] font-black text-center tracking-[-0.03em] max-w-4xl mx-auto leading-[1.28]">
             電子カルテも、会計機能もありません。
             <br />
             <span style={{ color: "#16A34A" }}>ただ「予約」を、極める。</span>

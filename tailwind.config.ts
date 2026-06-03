@@ -21,6 +21,8 @@ export default {
       fontFamily: {
         sans: ['"Noto Sans JP"', "Inter", "system-ui", "sans-serif"],
         en: ["Inter", '"Noto Sans JP"', "system-ui", "sans-serif"],
+        jp: ['"Zen Kaku Gothic New"', '"Noto Sans JP"', "system-ui", "sans-serif"],
+        mincho: ['"Zen Old Mincho"', "serif"],
       },
       maxWidth: { site: "1200px", text: "760px" },
       boxShadow: {

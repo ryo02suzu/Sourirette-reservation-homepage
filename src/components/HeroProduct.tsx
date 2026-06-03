@@ -104,14 +104,13 @@ export function HeroProduct() {
                 </span>
                 歯科・医療機関のための、集患DXパートナー
               </span>
-              <h1 className="font-jp font-extrabold text-brand-deep tracking-[-0.03em] leading-[1.13] text-[38px] sm:text-[50px] lg:text-[58px]">
-                医院の集患を、<br />
-                ホームページと予約で。<br />
-                <span style={{ color: "#16A34A" }}>まるごと、なめらかに。</span>
+              <h1 className="font-jp font-black text-brand-deep tracking-[-0.045em] leading-[1.06] text-[48px] sm:text-[64px] lg:text-[76px]">
+                選ばれる医院を、<br />
+                <span style={{ color: "#16A34A" }}>デザインする。</span>
               </h1>
-              <p className="text-[16.5px] lg:text-[18px] text-slate-700 leading-[1.85] max-w-xl">
-                歯科・医療機関のための<strong className="font-bold text-brand-deep">ホームページ制作</strong>と、予約・経営システム
-                <strong className="font-bold text-brand-deep">「Arche」</strong>。さらにGoogleクチコミ増援「Q-re」やECまで、集患から経営までまるごと支援します。
+              <p className="text-[16.5px] lg:text-[18px] text-slate-700 leading-[1.9] max-w-lg">
+                ホームページ制作・予約システム「Arche」・クチコミ獲得まで。
+                歯科・医療機関の<strong className="font-bold text-brand-deep">“集患”</strong>を、まるごと。
               </p>
             </motion.div>
 

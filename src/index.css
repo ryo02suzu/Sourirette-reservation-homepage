@@ -22,7 +22,7 @@
     @apply font-en text-[12px] font-bold tracking-[0.18em] text-brand uppercase;
   }
   .sect-title {
-    @apply font-sans font-bold tracking-[-0.01em] text-ink;
+    @apply font-jp font-black tracking-[-0.02em] text-ink;
   }
   /* 矢印リンク（一覧へ ›） */
   .arrow-link {
